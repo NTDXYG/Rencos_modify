@@ -3,6 +3,7 @@ code for ICSE 2020 paper "Retrieval-based Neural Source Code Summarization"
 
 ### 参考视频
 
+https://www.bilibili.com/video/BV1S34y1i7AW
 
 
 
