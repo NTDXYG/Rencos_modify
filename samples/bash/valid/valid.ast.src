@@ -1,0 +1,1059 @@
+ROOT() UTILITY(cal) FLAG(-h)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-i) FLAG(-I) ARGUMENT({})<Regex> UTILITY(cat) ARGUMENT({})<File> ARGUMENT({})<File> UTILITY(grep) ARGUMENT(Regex)<Regex>
+ROOT(root) T(input_prog) T(2>&1) T(|) T(tee) T(/dev/tty) T(|) T(my_editor)
+ROOT() PIPELINE() UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> UTILITY(nl) FLAG(-w) ARGUMENT(Quantity)<Quantity> FLAG(-s) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> UNARYLOGICOP(!) FLAG(-perm) ARGUMENT(-Permission)<Permission>
+ROOT(root) T(diff) T(<() T(echo) T(Regex)
+ROOT() UTILITY(tree) FLAG(-d) FLAG(-L) ARGUMENT(Number)<Number> FLAG(-i) FLAG(--noreport)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(d)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-exec::;) UTILITY(echo) ARGUMENT(Regex)<Regex> ARGUMENT({})<Regex>
+ROOT() UTILITY(head) FLAG(--lines) ARGUMENT(-Quantity)<Quantity> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-size) ARGUMENT(Size)<Size> FLAG(-delete)
+ROOT(root) T(echo) T($() T(ls) T($() T(pwd)
+ROOT() UTILITY(ls) FLAG(-d) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission>
+"ROOT(root) T(octave) T(-q) T(--eval) T(printf) T((""%f\n"",) T([0:0.1:pi/2])|nl|tee) T(x.txt)"
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-n) ARGUMENT(Quantity)<Quantity> FLAG(-I) ARGUMENT({})<Regex> UTILITY(gzip) FLAG(-d) ARGUMENT({})<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-exec::;) UTILITY(grep) FLAG(-q) ARGUMENT(Regex)<Regex> ARGUMENT({})<File> FLAG(-print)
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(gzip) FLAG(-9) ARGUMENT({})<Regex>
+ROOT() UTILITY(chown) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(sed) FLAG(-i) ARGUMENT(Program)<Program> ARGUMENT(File)<File> ARGUMENT({})<File>
+ROOT() UTILITY(sort) ARGUMENT(File)<File> FLAG(-o) ARGUMENT(File)<File>
+ROOT(root) T(find) T(.) T(-maxdepth) T(1) T(-type) T(d) T(-print0) T(|) T(xargs) T(-0) T(-I) T({}) T(sh) T(-c) T(echo) T(-e) T($(find) T({}) T(|) T(wc) T(-l)) T({}) T(|) T(sort) T(-n)
+ROOT(root) T(find) T(Path) T(-iname) T(Regex) T(-exec) T(bash) T(-c) T(rm) T(-r) T(-f) T({}) T(\;)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print) UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-i) FLAG(-l) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT(root) T(find) T(.) T(-xdev) T(-print0) T(|) T(cpio) T(-oa0V) T(|) T(gzip) T(>) T(path_to_save.cpio.gz)
+ROOT() PIPELINE() UTILITY(du) FLAG(-h) FLAG(-s) FLAG(-x) ARGUMENT(File)<File> UTILITY(sort) FLAG(-r) FLAG(-h) UTILITY(head) FLAG(-) ARGUMENT(Quantity)<Quantity>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(rsync) FLAG(-a) FLAG(-v) FLAG(-z) FLAG(-r) FLAG(-u) FLAG(--delete-excluded) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-mmin) ARGUMENT(-Quantity)<Quantity>
+"ROOT(root) T(awk) T({gsub(/^[) T(\t]+|[) T(\t]+$/,"""");) T(print;}) T(in.txt) T(|) T(hexdump) T(-C) T(|) T(less)"
+ROOT() PIPELINE() UTILITY(history) UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() UTILITY(awk) ARGUMENT(Program)<Program> ARGUMENT(Program)<Program>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> UTILITY(sed) FLAG(-r) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(l)<Type> FLAG(-lname) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() UTILITY(sort) FLAG(-n) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-atime) ARGUMENT(+Timespan)<Timespan> FLAG(-exec::;) UTILITY(rm) ARGUMENT({})<File>
+ROOT() UTILITY(mount) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> ARGUMENT(Directory)<Directory>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(grep) FLAG(-i) ARGUMENT(Regex)<Regex> ARGUMENT({})<File> FLAG(-print)
+ROOT(root) T(comm) T(-2) T(-3) T(<() T(sort) T(File)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::+) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UNARYLOGICOP(!) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(ln) FLAG(-s) ARGUMENT(File)<File> ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(.) T(-name) T(*\?*) T(>) T(output.txt)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-group) ARGUMENT(Regex)<Regex>
+"ROOT(root) T(echo) T(hey) T(hey,) T(we're) T(the) T(monkees) T(|) T(tee) T(>(gzip) T(--stdout) T(>) T(my_log.gz))"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-exec::;) UTILITY(grep) FLAG(-l) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-exec::+) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT(root) T(find) T(.) T(-name) T(*.py) T(-type) T(f) T(>) T(output.txt)
+ROOT() UTILITY(rsync) FLAG(-a) FLAG(-z) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(mkdir) ARGUMENT(Directory)<Directory>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT(root) T(ssh) T(-q) T(Regex) T(command)
+ROOT() UTILITY(rm) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(tar) FLAG(-t) FLAG(-f) ARGUMENT(File)<File> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> UTILITY(uniq)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(sed) FLAG(-i) ARGUMENT(Program)<Program> ARGUMENT({})<File>
+ROOT(root) T(find) T(/) T(-size) T(0) T(-ok) T(rm) T({) T(}) T(;)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(sort) UTILITY(tail) FLAG(-n) ARGUMENT(+Quantity)<Quantity> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(echo) ARGUMENT(Regex)<Regex> ARGUMENT({})<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(mv) ARGUMENT({})<File> ARGUMENT(File)<File>
+ROOT() UTILITY(echo) COMMANDSUBSTITUTION() UTILITY(sleep) ARGUMENT(Timespan)<Timespan>
+ROOT() PIPELINE() UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> UTILITY(tr) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-newermt) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-iregex) ARGUMENT(Regex)<Regex> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-exec::;) UTILITY(rm) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-exec::;) UTILITY(mkdir) ARGUMENT(Directory)<Directory>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-user) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(chown) FLAG(-h) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(rsync) FLAG(--recursive) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT(root) T(pstree) T(-ap) T(`pidof) T(cron`)
+ROOT() UTILITY(mktemp) FLAG(-p) ARGUMENT(Directory)<Directory>
+ROOT() UTILITY(cd) COMMANDSUBSTITUTION() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-printf) ARGUMENT('%h\n')<Format>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-i) FLAG(-I) ARGUMENT({})<Regex> UTILITY(cp) FLAG(-p) ARGUMENT({})<File> ARGUMENT(File)<File> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(sed) FLAG(-i) ARGUMENT(Program)<Program> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> UTILITY(awk) FLAG(-F) ARGUMENT(Regex)<Regex> ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> UNARYLOGICOP(!) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-delete)
+ROOT() UTILITY(which) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(grep) FLAG(-I) FLAG(-w) ARGUMENT(Regex)<Regex> ARGUMENT({})<File> UTILITY(grep) FLAG(-E) FLAG(-v) ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(/usr) T(-type) T(f) T(|) T(samefile) T(-g) T(10000) T(>usr.dups)
+ROOT(root) T(find) T(.) T(-name) T(my.txt) T(2>/dev/null)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(echo) ARGUMENT(Regex)<Regex> ARGUMENT({})<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type>
+"ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-printf) ARGUMENT(""%p:%T@\n"")<Format> UTILITY(sort) FLAG(-t) ARGUMENT(Regex)<Regex> FLAG(-k) ARGUMENT(Number)<Number>"
+ROOT() UTILITY(ssh) FLAG(-o) ARGUMENT(UserKnownHostsFile=/dev/null)<Option> ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(/path/to/dir1) T(-printf) T(%U) T(%G) T(%m) T(%p\n) T(>) T(/tmp/dir1.txt)
+ROOT(root) T(./aaa.sh) T(|&) T(tee) T(-a) T(log)
+"ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-printf) ARGUMENT(""%T@\n"")<Format> UTILITY(cut) FLAG(-f) ARGUMENT(Number)<Number> FLAG(-d) ARGUMENT(Regex)<Regex> UTILITY(sort) FLAG(-n) FLAG(-r)"
+ROOT() PIPELINE() UTILITY(echo) FLAG(-e) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(touch) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File> UTILITY(nl) FLAG(-n) ARGUMENT(ln)<Format>
+ROOT(root) T(find) T(.) T(-name) T(*) T(-type) T(f) T(-exec) T(dos2unix) T({}) T(;)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(shopt) FLAG(-s) ARGUMENT(globstar)<Option> ARGUMENT(nullglob)<Option>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(type_descriptor)<Type>
+ROOT(root) T(tmux) T(show-environment) T(-t) T(sessname) T(|) T(grep) T(RBENV)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-cmin) ARGUMENT(-Quantity)<Quantity> UTILITY(less) FLAG(-R)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-I) FLAG(-R) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT(root) T(read) T(-p) T($() T(echo) T(-e) T(Regex)
+ROOT() UTILITY(grep) FLAG(-r) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> FLAG(-ls)
+ROOT() UTILITY(chown) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-exec::;) UTILITY(ls) FLAG(-l) FLAG(-h) ARGUMENT({})<File> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(xargs) FLAG(-i) FLAG(-I) ARGUMENT({})<Regex> UTILITY(dig) FLAG(-x) ARGUMENT({})<Regex> ARGUMENT(Regex)<Regex> ARGUMENT({})<Regex>
+"ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> FLAG(-printf) ARGUMENT('""%p""\n')<Format> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) FLAG(-f) ARGUMENT({})<File>"
+ROOT(root) T(...) T(|) T(column) T(-s$\t) T(-t)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-path) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print) FLAG(-exec::;) UTILITY(grep) FLAG(-H) FLAG(-n) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT(root) T(cat) T(File) T(|)
+"ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> UNARYLOGICOP(!) FLAG(-type) ARGUMENT(d)<Type> FLAG(-printf) ARGUMENT(""%T@ %p\n"")<Format> UTILITY(sort) FLAG(-n) UTILITY(head) FLAG(-n) ARGUMENT(Quantity)<Quantity>"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission>
+ROOT() UTILITY(read) FLAG(-p) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(od) FLAG(-t) ARGUMENT(uI)<Type> FLAG(-N) ARGUMENT(File)<File> ARGUMENT(File)<File> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(f)<Type> UTILITY(md5sum)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-iname) ARGUMENT(Regex)<Regex> FLAG(-delete)
+ROOT() UTILITY(readlink) FLAG(-f) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-H) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(who) ARGUMENT(File)<File> ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT(root) T(for) T(i) T(in) T(`find) T(.) T(-exec) T(echo) T({}) T(;`;) T(do) T(cmd1) T($i;) T(cmd2) T($i;) T(done)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-perm) ARGUMENT(Permission)<Permission> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(mv) ARGUMENT({})<File> ARGUMENT(File)<File> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(mv) ARGUMENT({})<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-exec::;) UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(rsync) FLAG(-a) FLAG(-H) FLAG(-v) FLAG(-z) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-print)
+ROOT(root) T(find) T(.) T(-type) T(d) T(-print0) T(|) T(tar) T(cf) T(directory-structure.tar) T(--null) T(--files-from) T(-) T(--no-recursion)
+ROOT() PIPELINE() UTILITY(ls) FLAG(-t) FLAG(-p) UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> UTILITY(tail) FLAG(-n) ARGUMENT(+Quantity)<Quantity> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) OPERATOR(--) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+"ROOT(root) T(find) T(.) T(-type) T(f) T(-exec) T(bash) T(-c) T(for) T(f) T(do) T(d=${f%/*}) T(b=${f##*/}) T(nb=${b//[^A-Za-z0-9._-]/_};) T([[) T($b) T(=) T(""$nb"") T(]]) T(||) T(echo) T(mv) T(""$f"") T(""$d/$nb"";) T(done) T(_) T({}) T(+)"
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File> UTILITY(wc) FLAG(-l)
+ROOT(root) T(yes) T(0) T(|) T(script) T(-c) T(ispell) T(text.txt) T(/dev/null)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT(root) T([[) T($(find) T(.) T(-maxdepth) T(1) T(-cmin) T(+60) T(-name) T(file)) T(=) T(]]) T(&&) T(echo) T(old)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UNARYLOGICOP(!) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(gzip) ARGUMENT({})<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(grep) FLAG(-n) ARGUMENT(Regex)<Regex>
+ROOT(root) T(su) T(-) T(jenkins) T(-s) T(/bin/bash)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> FLAG(-l) FLAG(-s) ARGUMENT({})<File>
+ROOT() UTILITY(watch) UTILITY(echo) FLAG(-e) ARGUMENT(Regex)<Regex>
+ROOT(root) T(y=$(bash) T(-c) T(read) T(-n) T(1) T(c;) T(echo) T(\$c))
+ROOT() PIPELINE() UTILITY(mount) UTILITY(grep) COMMANDSUBSTITUTION() UTILITY(readlink) FLAG(-f) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-newer) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-daystart) FLAG(-mtime) ARGUMENT(-Timespan)<Timespan>
+ROOT() UTILITY(mkdir) FLAG(-p) ARGUMENT(Directory)<Directory>
+"ROOT(root) T(cat) T(filename) T(|) T(python) T(-cfrom) T(fileinput) T(import) T(input;) T(print) T(sum(map(int,) T(input())))"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(touch) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-daystart) FLAG(-mtime) ARGUMENT(-Timespan)<Timespan>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-n) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() FLAG(-perm) ARGUMENT(Permission)<Permission> BINARYLOGICOP(-or) FLAG(-perm) ARGUMENT(Permission)<Permission> FLAG(-print) UTILITY(diff) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(ping) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> UNARYLOGICOP(-not) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(chown) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-exec::;) UTILITY(ls) FLAG(-l) FLAG(-h) ARGUMENT({})<File> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-path) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-type) ARGUMENT(f)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UNARYLOGICOP(!) FLAG(-newer) ARGUMENT(File)<File> UNARYLOGICOP(!) FLAG(-samefile) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(rm) ARGUMENT({})<File>
+ROOT(root) T(tmux) T(-2) T(new-session) T(-s) T(name) T(another_script.sh) T($1)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT() UTILITY(dirname) COMMANDSUBSTITUTION() UTILITY(readlink) FLAG(-f) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(-Timespan)<Timespan> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> BRACKET() FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(wc) ARGUMENT(File)<File>
+ROOT() UTILITY(rmdir) ARGUMENT(Directory)<Directory> ARGUMENT(Directory)<Directory>
+ROOT(root) T(echo) T(-e) T($()
+"ROOT() PIPELINE() UTILITY(sed) ARGUMENT(Program)<Program> ARGUMENT(File)<File> UTILITY(join) FLAG(-a) ARGUMENT(Quantity)<Quantity> FLAG(-e) ARGUMENT(Regex)<Regex> FLAG(-j) ARGUMENT(Regex)<Regex> FLAG(-o) ARGUMENT(1.1,2.2)<Format> ARGUMENT(File)<File> ARGUMENT(File)<File>"
+ROOT() UTILITY(cd) COMMANDSUBSTITUTION() PIPELINE() UTILITY(which) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(dirname) ARGUMENT({})<Regex>
+ROOT() UTILITY(tail) FLAG(-n) ARGUMENT(+Quantity)<Quantity> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(w) UTILITY(sort)
+"ROOT() UTILITY(mount) FLAG(-o) ARGUMENT(remount,rw)<Option> FLAG(-t) ARGUMENT(yaffs2)<Option> ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>"
+ROOT() UTILITY(mkdir) FLAG(-p) FLAG(-v) ARGUMENT(Directory)<Directory>
+ROOT(root) T(ssh) T(-q) T($HOST) T([[) T(-f) T($FILE_PATH) T(]]) T(&&) T(echo) T(File) T(exists) T(||) T(echo) T(File) T(does) T(not) T(exist;)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(grep) FLAG(-i) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(chmod) ARGUMENT(+Permission)<Permission> ARGUMENT(File)<File>
+ROOT() UTILITY(od) FLAG(-A) ARGUMENT(n)<Option> FLAG(-t) ARGUMENT(d)<Type> FLAG(-N) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(info) FLAG(-O) ARGUMENT(Regex)<Regex>
+ROOT(root) T(tail) T(-n) T($() T(grep) T(-n) T(Regex) T(File) T(|) T(head) T(-n) T(Quantity) T(|) T(cut) T(-d) T(Regex) T(-f) T(Number)
+ROOT(root) T(git) T(diff) T(--name-only) T(|) T(xargs) T(dirname) T(|) T(uniq)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT(root) T(find) T(.) T(-depth) T(-name) T(*.zip) T(-exec) T(/usr/bin/unzip) T(-n) T({}) T(;) T(-delete)
+ROOT(root) T(find) T(.) T(-type) T(f) T(-exec) T(perl) T(-wnl) T(-e) T(/\s1$/) T(and) T(print) T({}) T(+)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-delete)
+"ROOT() UTILITY(mkdir) COMMANDSUBSTITUTION() UTILITY(seq) FLAG(-f) ARGUMENT(""$HOME/Labs/lab4a/folder%03g"")<Format> ARGUMENT(Number)<Number>"
+ROOT(root) T(find) T(.) T(-name) T(*.JPG) T(-exec) T(convert) T({}) T(-resize) T(50%) T({}) T(;)
+ROOT() UTILITY(sort) FLAG(-n) FLAG(-k) ARGUMENT(Number)<Number>
+ROOT() UTILITY(od) FLAG(-a) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(ls) FLAG(-1) UTILITY(wc) FLAG(-l)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> UNARYLOGICOP(-not) FLAG(-samefile) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-ls)
+ROOT(root) T(find) T(/) T(-maxdepth) T(1) T(-xdev) T(-type) T(f) T(-exec) T(grep) T(-Zli) T(stringtofind) T({}) T(+) T(|) T(parallel) T(-0) T(sed) T('/./d') T({})
+ROOT(root) T(alias) T(pwd=echo) T(-n) T($(/bin/pwd)) T(|) T(pbcopy)
+ROOT(root) T(cp) T($() T(ls) T(|) T(grep) T(-v) T(Regex)
+ROOT(root) T(find) T(xargstest/) T(-name) T(file??) T(|) T(xargs) T(myscript.sh)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-regex) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) FLAG(-name) ARGUMENT(Regex)<Regex> ARGUMENT(Path)<Path> ARGUMENT({})<Path> ARGUMENT(Path)<Path> ARGUMENT(Path)<Path>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(cut) FLAG(-c) ARGUMENT(Number)<Number> UTILITY(nl)
+ROOT() PIPELINE() UTILITY(yes) UTILITY(rm) FLAG(-i) ARGUMENT(File)<File>
+ROOT(root) T(find) T(.) T(-name) T(*.doc) T(|) T(while) T(read) T(i;) T(do) T(antiword) T(-i) T(1) T(${i}) T(>${i/doc/txt}) T(&&) T(rm) T(${i};) T(done)
+ROOT() UTILITY(rsync) FLAG(-r) FLAG(-t) FLAG(-u) FLAG(-v) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(basename) ARGUMENT({})<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-mtime) ARGUMENT(-Timespan)<Timespan> FLAG(-exec::;) UTILITY(rm) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-ctime) ARGUMENT(Timespan)<Timespan> FLAG(-type) ARGUMENT(f)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-print)
+ROOT() PIPELINE() UTILITY(hostname) FLAG(-I) UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() UTILITY(tmux)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-nouser) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(groups) ARGUMENT(Regex)<Regex> UTILITY(grep) FLAG(-q) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(uname) FLAG(-v) UTILITY(grep) FLAG(-o) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(ln) FLAG(-s) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(rev) UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> UTILITY(rev)
+ROOT(root) T(n_jobs=`expr) T($(jobs) T(|) T(wc) T(-l)`)
+ROOT() UTILITY(rsync) FLAG(-a) FLAG(-v) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(ls) FLAG(-l) FLAG(-R) ARGUMENT(File)<File> UTILITY(tee) FLAG(-a) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> UTILITY(more)
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(tr) FLAG(-c) FLAG(-d) ARGUMENT(Regex)<Regex> UTILITY(head) FLAG(-c) ARGUMENT(Quantity)<Quantity>
+ROOT() UTILITY(diff) FLAG(-u) ARGUMENT(Quantity)<Quantity> ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(df) FLAG(-h) ARGUMENT(File)<File>
+ROOT() UTILITY(chown) FLAG(-R) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(sed) FLAG(-i) FLAG(-e) ARGUMENT(Program)<Program> ARGUMENT({})<Program>
+ROOT(root) T(ps) T(x) T(-o) T(%p) T(%r) T(%y) T(%x) T(%c)
+ROOT(root) T(sudo) T(yum) T(clean) T(all)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(tr) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> UTILITY(tail) FLAG(-n) ARGUMENT(Quantity)<Quantity>
+ROOT(root) T(objdump) T(-x) T(`which) T(tail`)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() UNARYLOGICOP(!) FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-and) UNARYLOGICOP(!) FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(cp) FLAG(-p) ARGUMENT({})<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-mmin) ARGUMENT(-Quantity)<Quantity> FLAG(-print0) UTILITY(xargs) FLAG(-r) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(ls) FLAG(-l) ARGUMENT({})<File>
+"ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-printf) ARGUMENT(""%p\0"")<Format> FLAG(-printf) ARGUMENT(""newdir/%P\0"")<Format> UTILITY(xargs) FLAG(-0) FLAG(-L) ARGUMENT(Quantity)<Quantity> FLAG(-I) ARGUMENT({})<Regex> UTILITY(cp) FLAG(-n) ARGUMENT({})<File>"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-user) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-exec::+) UTILITY(echo) ARGUMENT({})<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-perm) ARGUMENT(-Permission)<Permission>
+ROOT() UTILITY(tar) FLAG(-I) ARGUMENT(File)<File> FLAG(-c) FLAG(-f) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT(root) T(|) T(md5)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(-Size)<Size>
+ROOT() UTILITY(basename) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(rsync) FLAG(--exclude) ARGUMENT(Regex)<Regex> FLAG(--exclude) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT(root) T(mv) T($() T(ls)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UTILITY(sort) UTILITY(tee) ARGUMENT(File)<File>
+ROOT(root) T(alias) T(rmc=find) T(.) T(-iname) T(core) T(-exec) T(rm) T({}) T(\;)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(grep) FLAG(-r) FLAG(-n) FLAG(-w) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(.) T(-name) T(build.xml) T(-exec) T(ant) T(-f) T({}) T(clean-all) T(;)
+ROOT(root) T(find) T(.) T(-iname) T(*.jpg) T(-print0) T(|) T(xargs) T(-I{}) T(-0) T(-r) T(convert) T(-resize) T(300x300) T({}) T($outdir/{})
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> UTILITY(wc) FLAG(-l)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(rm) ARGUMENT({})<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-size) ARGUMENT(+Size)<Size>
+ROOT() UTILITY(echo) COMMANDSUBSTITUTION() UTILITY(seq) ARGUMENT(Number)<Number> ARGUMENT(Number)<Number>
+ROOT() UTILITY(watch) FLAG(-n) ARGUMENT(Quantity)<Quantity> UTILITY(cat) ARGUMENT(File)<File>
+ROOT(root) T(find) T(.) T(-type) T(f) T(-mtime) T(+7) T(|) T(tee) T(compressedP.list) T(|) T(parallel) T(compress)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(rsync) FLAG(-a) FLAG(-v) FLAG(-R) ARGUMENT({})<File> ARGUMENT(File)<File> FLAG(-exec::;) UTILITY(rm) FLAG(-r) FLAG(-f) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mindepth) ARGUMENT(Quantity)<Quantity> FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(mv) FLAG(-t) ARGUMENT(Directory)<Directory> ARGUMENT({})<File>
+ROOT(root) T(cat) T($(find) T(/usr/share/doc/) T(-name) T(*.txt)) T(|) T(zegrep) T(-ic) T(\<exception\>)
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(readlink) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(curl) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> UTILITY(tr) FLAG(-d) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(grep) ARGUMENT(Regex)<Regex> UTILITY(cut) FLAG(-f) ARGUMENT(Number)<Number> FLAG(-d) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(ping) ARGUMENT(Regex)<Regex> FLAG(-I) ARGUMENT(Regex)<Regex> FLAG(-c) ARGUMENT(Quantity)<Quantity> FLAG(-w) ARGUMENT(Timespan)<Timespan>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+"ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-iname) ARGUMENT(Regex)<Regex> FLAG(-printf) ARGUMENT(""%h\n"")<Format> UTILITY(sort) FLAG(-u)"
+"ROOT(root) T(find) T(.) T(-type) T(d) T(!) T(-perm) T(-g+r,u+r,o+r) T(-prune) T(-o) T(-print) T(>) T(files_and_folders)"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(ls) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission> UTILITY(head)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(paste) ARGUMENT(File)<File> UTILITY(sed) FLAG(-e) ARGUMENT(Program)<Program> UTILITY(column) FLAG(-t) FLAG(-s) ARGUMENT(Regex)<Regex>
+ROOT(root) T(ln) T(-s) T($() T(readlink) T(-e) T(File)
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(dirname) ARGUMENT({})<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-path) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-path) ARGUMENT(Regex)<Regex> UTILITY(cpio) FLAG(-p) FLAG(-a) FLAG(-d) FLAG(-l) FLAG(-u) FLAG(-v) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print) UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(md5sum) ARGUMENT({})<File> UTILITY(sed) ARGUMENT(Program)<Program>
+ROOT() COMMANDSUBSTITUTION() PIPELINE() UTILITY(md5sum) ARGUMENT(File)<File> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(wc) FLAG(-l) ARGUMENT({})<File> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) FLAG(-r) ARGUMENT({})<File>
+ROOT() UTILITY(basename) COMMANDSUBSTITUTION() UTILITY(pwd)
+ROOT() UTILITY(mkdir) FLAG(-p) ARGUMENT(Directory)<Directory>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) FLAG(-r) FLAG(-f) ARGUMENT({})<File>
+ROOT(root) T(find) T(.) T(-type) T(f) T(-mtime) T(-1) T(-print|xargs) T(pr) T(-n) T(|lp)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-regextype) ARGUMENT(posix-extended)<Type> FLAG(-type) ARGUMENT(d)<Type> FLAG(-regex) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(rename) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(sed) FLAG(-i) ARGUMENT(Program)<Program> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(grep) FLAG(-H) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(!) FLAG(-wholename) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File> FLAG(-print)
+ROOT() COMMANDSUBSTITUTION() UTILITY(hostname)
+ROOT(root) T(find) T(.) T(-name) T(*.NEF) T(-exec) T(basename) T({}) T(.NEF) T(;) T(|) T(xargs>) T(-i) T(sh) T(-c) T(dcraw) T(-w) T(-c) T($0.NEF) T(|) T(convert) T(-) T(-resize) T(25%) T($0.jpg)
+ROOT() PIPELINE() UTILITY(ls) FLAG(-t) FLAG(-p) UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> UTILITY(tail) FLAG(-n) ARGUMENT(+Quantity)<Quantity> UTILITY(xargs) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) OPERATOR(--) ARGUMENT({})<File>
+ROOT(root) T(export) T(PS1=\[\033]0;\u) T($(host) T($(hostname))\007\]\u@\h:\w\$)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(tar) FLAG(-c) FLAG(-z) FLAG(-f) ARGUMENT(File)<File> FLAG(-X) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(sed) FLAG(-i) ARGUMENT(Program)<Program> ARGUMENT(File)<File> ARGUMENT(File)<File> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-ls)
+ROOT() PIPELINE() UTILITY(hostname) UTILITY(sed) ARGUMENT(Program)<Program>
+ROOT(root) T(kill) T(`pidof) T(firefox`)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-n) ARGUMENT(Quantity)<Quantity> FLAG(-I) ARGUMENT({})<Regex> UTILITY(echo) ARGUMENT(Regex)<Regex> ARGUMENT({})<Regex> UTILITY(sh) ARGUMENT(File)<File>
+ROOT(root) T(find) T(.) T(-name) T(my.txt) T(2>) T(find_error.txt)
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-mmin) ARGUMENT(-Quantity)<Quantity>
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(rev) UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(-Number)<Number> UTILITY(rev)
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(tail) FLAG(-n) ARGUMENT(+Quantity)<Quantity> UTILITY(split) FLAG(--lines) ARGUMENT(Quantity)<Quantity>
+ROOT() UTILITY(ssh-keygen) FLAG(-f) ARGUMENT(File)<File> FLAG(-N) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print)
+ROOT() UTILITY(ln) FLAG(-s) ARGUMENT(File)<File> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(md5sum)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(cat) ARGUMENT({})<File>
+ROOT(root) T(echo) T(password) T(|) T(su) T(user1) T(-c) T(command)
+ROOT(root) T(find) T(.) T(-name) T(*.fq) T(-exec) T(cat) T({}) T(;) T(|) T(fastqc) T(/dev/stdin)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-perm) ARGUMENT(Permission)<Permission>
+ROOT() PIPELINE() UTILITY(fold) FLAG(-w) ARGUMENT(Quantity)<Quantity> ARGUMENT(File)<File> UTILITY(sort) UTILITY(uniq) FLAG(-c) UTILITY(sort) FLAG(-n) FLAG(-r)
+ROOT(root) T(sort) T(temp.txt) T(>) T(temp.txt.sort) T(&&) T(mv) T(temp.txt.sort) T(temp.txt)
+ROOT() PIPELINE() UTILITY(ifconfig) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT(root) T(IFS=) T(read) T(-d) T($\0) T(-r) T(file)
+ROOT() PIPELINE() UTILITY(env) UTILITY(awk) FLAG(-F) ARGUMENT(Regex)<Regex> ARGUMENT(Program)<Program> UTILITY(grep) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(history) UTILITY(sed) ARGUMENT(Program)<Program>
+ROOT(root) T(comm) T(-1) T(-2) T(<() T(cut) T(-d) T(Regex) T(-f) T(Number) T(File) T(|) T(uniq)
+ROOT(root) T(cd) T(`script`)
+ROOT() PIPELINE() UTILITY(md5sum) ARGUMENT(File)<File> UTILITY(sort) UTILITY(uniq) FLAG(-d) FLAG(-w) ARGUMENT(Quantity)<Quantity>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-f) FLAG(-amin) ARGUMENT(+Quantity)<Quantity>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0) UTILITY(sort) FLAG(-z) FLAG(-u) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(cp) FLAG(-t) ARGUMENT(Directory)<Directory> ARGUMENT({})<File>
+ROOT(root) T([[) T(!) T(-z) T(`find) T(YOUR_DIR/) T(-name) T(something`) T(]]) T(&&) T(echo) T(found) T(||) T(echo) T(not) T(found)
+ROOT(root) T(comm) T(-3) T(<() T(sort) T(File)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-mtime) ARGUMENT(Timespan)<Timespan> FLAG(-ls)
+ROOT() UTILITY(set) FLAG(-H)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(Size)<Size>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(!) FLAG(-path) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(grep) FLAG(-I) FLAG(-w) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(sed) ARGUMENT(Program)<Program> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-E) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(od) FLAG(-v) FLAG(-t) ARGUMENT(x1)<Type> ARGUMENT(File)<File>
+ROOT(root) T(find) T(/) T(-name) T(*.jpg) T(2>/dev/null)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UNARYLOGICOP(-not) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-mtime) ARGUMENT(Timespan)<Timespan> FLAG(-exec::;) UTILITY(gzip) ARGUMENT({})<Regex>
+ROOT() PIPELINE() UTILITY(yes) ARGUMENT(Regex)<Regex> UTILITY(rm) FLAG(-r) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-exec::;) UTILITY(compress) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(cal) UTILITY(awk) FLAG(-v) ARGUMENT(Program)<Program> ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-exec::;) UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File> FLAG(-print)
+ROOT() PIPELINE() UTILITY(finger) UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> UTILITY(sort) FLAG(-u)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-mtime) ARGUMENT(Timespan)<Timespan>
+"ROOT(root) T(top) T(-c) T(-p) T($(pgrep) T(-d,) T(-f) T(string_to_match_in_cmd_line))"
+ROOT() UTILITY(cat) COMMANDSUBSTITUTION() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT(root) T(whoami) T(hostname) T(-f)
+ROOT() UTILITY(shopt) FLAG(-s) ARGUMENT(direxpand)<Option>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(awk) FLAG(-F) ARGUMENT(Regex)<Regex> ARGUMENT(Program)<Program> UTILITY(sort) FLAG(-u)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() UTILITY(split) FLAG(-b) ARGUMENT(Size)<Size> FLAG(-d) FLAG(-a) ARGUMENT(Quantity)<Quantity> ARGUMENT(File)<File> ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(temp/images/*) T(-maxdepth) T(2) T(-iname) T(*.jpg) T(-print0) T(|) T(xargs) T(-0) T(mogrify) T(-resize) T(100x100>) T(-quality) T(80) T(-compress) T(JPEG) T(-monitor) T(-strip)
+"ROOT(root) T(find) T(.) T(-type) T(d) T(-exec) T(bash) T(-c) T(mv) T(""$1"") T(""${1//foo/Bar}"") T(--) T({}) T(;)"
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(rev) UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> UTILITY(rev)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-inum) ARGUMENT(Quantity)<Quantity> FLAG(-exec::;) UTILITY(rm) ARGUMENT({})<File>
+"ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-daystart) FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-mtime) ARGUMENT(-Timespan)<Timespan> ARGUMENT(Path)<Path> FLAG(-printf) ARGUMENT(""%M %n %u %g %10s %TY-%Tm-%Td %Ta %TH:%TM:%TS %h/%f\n"")<Format> UTILITY(awk) ARGUMENT(Program)<Program>"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-newerct) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(l)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(ls) FLAG(-l) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-wholename) ARGUMENT(Regex)<Regex> UTILITY(sed) ARGUMENT(Program)<Program> UTILITY(sh)
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(--complement) FLAG(-f) ARGUMENT(Number)<Number>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> BRACKET() FLAG(-iname) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-iname) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-iname) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-iname) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(echo) ARGUMENT({})<Regex>
+ROOT() UTILITY(read) FLAG(-p) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(rsync) FLAG(-v) FLAG(-a) FLAG(-u) FLAG(-t) ARGUMENT(File)<File> ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-inum) ARGUMENT(Quantity)<Quantity> FLAG(-exec::;) UTILITY(rm) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(ls) FLAG(-s) ARGUMENT({})<File> UTILITY(sort) FLAG(-n) UTILITY(head) FLAG(-) ARGUMENT(Quantity)<Quantity>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(Path) T(-name) T(Regex) T(-prune) T(-or) T(-exec) T(mv) T({}) T($() T(echo) T({}) T(|) T(tr) T(Regex) T(Regex)
+ROOT() UTILITY(rsync) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(mv) FLAG(-t) ARGUMENT(Directory)<Directory> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-f) FLAG(-atime) ARGUMENT(Timespan)<Timespan>
+ROOT(root) T(ls) T(-1) T(|) T(perl) T(-pe) T(s/\n$/some_delimiter/)
+ROOT(root) T(screen) T(-S) T(SessionName) T(-X) T(at) T(.#) T(stuff) T(date)
+ROOT(root) T(find) T(/home/www/) T(-type) T(f) T(|) T(xargs) T(perl) T(-pi) T(-e) T(s/subdomainA\.example\.com/subdomainB.example.com/g)
+ROOT() UTILITY(sed) ARGUMENT(Program)<Program>
+"ROOT() UTILITY(mount) FLAG(-o) ARGUMENT(rw,remount)<Option> ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>"
+ROOT() UTILITY(mkdir) ARGUMENT(Directory)<Directory>
+ROOT() PIPELINE() UTILITY(find) UTILITY(wc) FLAG(-l)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(f)<Type> ARGUMENT(Path)<Path>
+ROOT(root) T(touch) T($() T(date) T(--date) T(Regex)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-iname) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(rm) FLAG(-i) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(f)<Type> FLAG(-empty) FLAG(-delete)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(grep) FLAG(-i) FLAG(-l) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(echo) ARGUMENT({})<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mindepth) ARGUMENT(Quantity)<Quantity> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-print) UTILITY(tee) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(-Timespan)<Timespan> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-regextype) ARGUMENT(posix-extended)<Type> FLAG(-regex) ARGUMENT(Regex)<Regex> FLAG(-fprint) ARGUMENT(File)<File>
+ROOT(root) T(paste) T(<() T(cal) T(DateTime) T(DateTime)
+ROOT(root) T(alias) T(-g) T(X=|) T(cut) T(-d') T(') T(-f2)
+ROOT(root) T(echo) T(-ne) T(some) T(random\nbytes) T(|) T(xxd) T(-plain) T(|) T(tr) T(-d) T(\n) T(|) T(sed) T(s/\(..\)/%\1/g)
+ROOT() PIPELINE() UTILITY(history) UTILITY(grep) ARGUMENT(Regex)<Regex> FLAG(-A) ARGUMENT(Quantity)<Quantity> FLAG(-B) ARGUMENT(Quantity)<Quantity>
+ROOT(root) T(ssh) T(user@target) T(cd) T(/some/directory;) T(nohup) T(myprogram) T(>) T(foo.out) T(2>) T(foo.err) T(<) T(/dev/null)
+ROOT(root) T(find) T(/home/mine) T(-iname) T(*.png) T(-exec) T(sh) T(-c) T(cp) T($0) T(/home/mine/pngcoppies/copy/$0) T({}) T(;)
+ROOT() UTILITY(yes)
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(tr) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(ls) FLAG(-F) FLAG(-l) FLAG(-t) FLAG(-r) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(sort) FLAG(--unique) ARGUMENT(File)<File> UTILITY(split) FLAG(--numeric-suffixes) FLAG(--lines) ARGUMENT(Quantity)<Quantity> FLAG(--suffix-length) ARGUMENT(Quantity)<Quantity> FLAG(--verbose)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-H) FLAG(-i) FLAG(-n) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(awk) FLAG(-F) ARGUMENT(Regex)<Regex> ARGUMENT(Program)<Program> ARGUMENT(Program)<Program> UTILITY(column) FLAG(-t) FLAG(-s) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(chown) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() UTILITY(watch) FLAG(-n) ARGUMENT(Quantity)<Quantity> UTILITY(date)
+ROOT() UTILITY(split) FLAG(-a) ARGUMENT(Quantity)<Quantity> ARGUMENT(File)<File>
+ROOT() UTILITY(find) FLAG(-L) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(rm) ARGUMENT({})<File>
+ROOT() UTILITY(diff) FLAG(-b) FLAG(-u) ARGUMENT(Quantity)<Quantity> ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-exec::;) UTILITY(ls) FLAG(-l) FLAG(-h) ARGUMENT({})<File>
+ROOT(root) T(comm) T(-1) T(-2) T(<() T(sort) T(File)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+"ROOT(root) T(su) T(user1) T(-c) T(ssh) T(user1@192.168.1.2) T(""awk) T('\\$5==1{print) T(\\$3}') T(filename.log"") T(|) T(uniq) T(-c)"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> UNARYLOGICOP(-not) BRACKET() FLAG(-path) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) UNARYLOGICOP(-not) BRACKET() FLAG(-path) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) FLAG(-type) ARGUMENT(f)<Type>
+ROOT(root) T(tmux) T(show-environment) T(|) T(grep) T(RBENV)
+ROOT() UTILITY(echo) FLAG(-n) COMMANDSUBSTITUTION() UTILITY(hostname)
+ROOT(root) T(comm) T(-1) T(-2) T(<() T(comm) T(-1) T(-2) T(<() T(comm) T(-1) T(-2) T(<() T(sort) T(File)
+ROOT(root) T(kill) T(-9) T($(pgrep) T(amarok))
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(md5sum) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-exec::;) UTILITY(mkdir) FLAG(-p) ARGUMENT(Directory)<Directory> BINARYLOGICOP(-or) FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(touch) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-fprint) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type>
+ROOT(root) T(exec) T(1) T(2>&1) T(|) T(tee) T(${LOG_FILE})
+ROOT() UTILITY(chown) FLAG(-R) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() UTILITY(du) FLAG(-s) FLAG(--block-size) ARGUMENT(Size)<Size> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-path) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(file) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(ping) FLAG(-c) ARGUMENT(Quantity)<Quantity> FLAG(-b) ARGUMENT(Regex)<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program> UTILITY(sort) UTILITY(uniq)
+ROOT() PIPELINE() UTILITY(ps) FLAG(-a) FLAG(-u) ARGUMENT(Regex)<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(pstree) ARGUMENT({})<Regex>
+ROOT() PIPELINE() UTILITY(ping) FLAG(-q) FLAG(-c) ARGUMENT(Quantity)<Quantity> ARGUMENT(Regex)<Regex> UTILITY(tail) FLAG(-n) ARGUMENT(Quantity)<Quantity> UTILITY(cut) FLAG(-f) ARGUMENT(Number)<Number> FLAG(-d) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) FLAG(-r) FLAG(-f) ARGUMENT({})<File>
+"ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-depth) FLAG(-type) ARGUMENT(f)<Type> FLAG(-printf) ARGUMENT(""%d\t%p\n"")<Format>"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-newer) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mindepth) ARGUMENT(Quantity)<Quantity> FLAG(-delete)
+ROOT(root) T(cd) T(`/path/to/my/script`)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(mv) ARGUMENT({})<File> ARGUMENT(File)<File>
+ROOT(root) T(echo) T(`date) T(+%s`/86400) T(|) T(bc)
+ROOT() PIPELINE() UTILITY(tac) ARGUMENT(File)<File> UTILITY(sed) ARGUMENT(Program)<Program> UTILITY(tac)
+ROOT(root) T(screen) T(-ls)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-P) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-user) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(d)<Type> FLAG(-perm) ARGUMENT(Permission)<Permission> FLAG(-print)
+ROOT() PIPELINE() UTILITY(echo) FLAG(-e) ARGUMENT(Regex)<Regex> UTILITY(od) FLAG(-a)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print) UTILITY(xargs) FLAG(-n) ARGUMENT(Quantity)<Quantity> FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(echo) FLAG(-n) ARGUMENT(Regex)<Regex> UTILITY(od) FLAG(-A) ARGUMENT(n)<Option> FLAG(-t) ARGUMENT(x1)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mmin) ARGUMENT(-Quantity)<Quantity> FLAG(-mmin) ARGUMENT(+Quantity)<Quantity> FLAG(-type) ARGUMENT(d)<Type>
+ROOT(root) T(find) T(src/js) T(-type) T(f) T(-name) T(*.js) T(>) T(list.txt)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity>
+"ROOT(root) T(find) T(.) T(!) T(-name) T(.) T(-prune) T(-exec) T(sh) T(-c) T(shift) T($1;) T(mv) T(""$@"") T(targetdirectory/) T(2) T(1) T({}) T(+)"
+ROOT() PIPELINE() UTILITY(set) UTILITY(grep) FLAG(-E) ARGUMENT(Regex)<Regex> UTILITY(sed) FLAG(-r) FLAG(-e) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(!) FLAG(-path) ARGUMENT(Regex)<Regex> UNARYLOGICOP(!) FLAG(-path) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-atime) ARGUMENT(+Timespan)<Timespan> FLAG(-print)
+ROOT() UTILITY(yes) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(rename) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT(root) T(for) T(f) T(in) T(fgh*;) T(do) T(mv) T($f) T($(echo) T($f) T(|) T(sed) T(s/^fgh/jkl/g);) T(done)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(-Timespan)<Timespan> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(tar) FLAG(-r) FLAG(-v) FLAG(-f) ARGUMENT(File)<File> ARGUMENT({})<File>
+ROOT(root) T(ssh-copy-id) T(myname@somehost)
+ROOT() UTILITY(grep) FLAG(-i) FLAG(-n) FLAG(-r) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(set) FLAG(-o) ARGUMENT(errexit)<Option>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(grep) FLAG(-H) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(md5) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT(root) T(tar) T(-czf) T(backup.tar.gz) T(--exclude-tag-all=exclude.tag) T(/path/to/backup)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-size) ARGUMENT(+Size)<Size>
+ROOT() PIPELINE() UTILITY(ifconfig) ARGUMENT(Regex)<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(rm) FLAG(-f) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iregex) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(split) FLAG(-l) ARGUMENT(Quantity)<Quantity> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-atime) ARGUMENT(+Timespan)<Timespan>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(mv) ARGUMENT({})<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-print) UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(chown) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(read) FLAG(-r) FLAG(-p) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(touch) FLAG(-m) FLAG(--date) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> UTILITY(grep) ARGUMENT(Regex)<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(ln) FLAG(-f) FLAG(-s) ARGUMENT(File)<File> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT() PIPELINE() UTILITY(sort) ARGUMENT(File)<File> UTILITY(uniq) FLAG(-c)
+ROOT() UTILITY(readlink) FLAG(-f) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(sed) FLAG(-i) ARGUMENT(Program)<Program> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(dig) ARGUMENT(Regex)<Regex> UTILITY(grep) FLAG(-e) ARGUMENT(Regex)<Regex> UTILITY(tr) FLAG(-s) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::+) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() UTILITY(read) FLAG(-n) ARGUMENT(Quantity)<Quantity> FLAG(-p) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT(root) T(command) T(|) T(less)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-mtime) ARGUMENT(Timespan)<Timespan>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(tar) FLAG(-u) FLAG(-v) FLAG(-f) ARGUMENT(File)<File> ARGUMENT({})<File>
+"ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-delete) FLAG(-printf) ARGUMENT(""%h\0"")<Format> UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rmdir) ARGUMENT({})<Directory>"
+ROOT() PIPELINE() UTILITY(ls) FLAG(-l) FLAG(-R) ARGUMENT(File)<File> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-group) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-fprintf) ARGUMENT(File)<File> ARGUMENT('%-10s %p\n')<Format>
+ROOT() UTILITY(source) PROCESSSUBSTITUTION(<) UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(rm) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(md5sum) ARGUMENT({})<File> UTILITY(awk) ARGUMENT(Program)<Program> UTILITY(sort) UTILITY(md5sum)
+ROOT() PIPELINE() UTILITY(true) UTILITY(echo) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(sed) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() FLAG(-perm) ARGUMENT(-Permission)<Permission> FLAG(-fprintf) ARGUMENT(File)<File> ARGUMENT('%#m %u %p\n')<Format> BINARYLOGICOP(-and) BRACKET() FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-fprintf) ARGUMENT(File)<File> ARGUMENT('%-10s %p\n')<Format>
+ROOT(root) T(ssh) T(-t) T(me@machine) T(./executeMyScript) T(&&) T(bash) T(-i)
+ROOT() UTILITY(read) FLAG(-n) ARGUMENT(Quantity)<Quantity> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) FLAG(-x) ARGUMENT(Path)<Path> FLAG(-inum) ARGUMENT(Quantity)<Quantity>
+ROOT() UTILITY(read) FLAG(-p) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT(root) T(find) T(/full/path/to/dir) T(-name) T(*.txt) T(-print0) T(|) T(xargs) T(-0) T(>/tmp/logfile)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path>
+ROOT(root) T(find) T(.) T(-name) T(*.txt) T(|) T(xargs) T(python) T(-c) T(import) T(sys;) T(print) T(sys.argv[1:])
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(./subdirectory) T(-type) T(f) T(2>>error.log)
+ROOT() UTILITY(cp) FLAG(-n) FLAG(-r) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(echo) COMMANDSUBSTITUTION() UTILITY(date)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-iregex) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-size) ARGUMENT(-Size)<Size>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-inum) ARGUMENT(Quantity)<Quantity> FLAG(-exec::;) UTILITY(mv) ARGUMENT({})<File> ARGUMENT(File)<File>
+ROOT(root) T(find) T(.) T(-type) T(d) T(-print0) T(|) T(tar) T(cf) T(dirstructure.tar) T(--null) T(--files-from) T(-) T(--no-recursion)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-printf) ARGUMENT('%T+ %p\n')<Format> UTILITY(sort) UTILITY(head) FLAG(-) ARGUMENT(Quantity)<Quantity>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(ln) FLAG(-s) ARGUMENT({})<File> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File> BINARYLOGICOP(-or) FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+"ROOT(root) T(join) T(-o) T(1.1,1.2,1.3,2.1,2.2,2.3) T(-j) T(Regex) T(<() T(sort) T(-k) T(Number) T(File)"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-group) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(basename) ARGUMENT({})<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-execdir::;) UTILITY(pwd)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-regex) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(md5sum) ARGUMENT({})<File> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT(root) T(find) T(/path) T(-type) T(f) T(-name) T(*.ext) T(-exec) T(my_cool_script) T({}) T(;)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print) FLAG(-xdev)
+ROOT() UTILITY(chgrp) FLAG(-R) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(rm) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-n) ARGUMENT(Quantity)<Quantity> FLAG(-I) ARGUMENT({})<Regex> UTILITY(dirname) ARGUMENT({})<Regex> UTILITY(xargs) FLAG(-n) ARGUMENT(Quantity)<Quantity> FLAG(-I) ARGUMENT({})<Regex> UTILITY(cp) FLAG(-f) ARGUMENT(File)<File> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(+Size)<Size>
+ROOT() UTILITY(rename) FLAG(-n) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(column) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(awk) ARGUMENT(Program)<Program> ARGUMENT(Program)<Program> UTILITY(column) FLAG(-t)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File> FLAG(-print) UTILITY(sed) FLAG(-r) ARGUMENT(Program)<Program>
+ROOT(root) T(find) T(.) T(-name) T(*.zip) T(-exec) T(sh) T(-c) T(unzip) T(-d) T(`dirname) T({}`) T({}) T(;)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-user) ARGUMENT(Regex)<Regex> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-ls) UTILITY(sort) FLAG(-n) FLAG(-r) FLAG(-k) ARGUMENT(Number)<Number> UTILITY(head) FLAG(-) ARGUMENT(Quantity)<Quantity>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mount) FLAG(-depth) FLAG(-print) UTILITY(cpio) FLAG(-p) FLAG(-d) FLAG(-m) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-iname) ARGUMENT(Regex)<Regex>
+"ROOT() UTILITY(mount) FLAG(-t) ARGUMENT(cifs)<Option> ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> FLAG(-o) ARGUMENT(username=Username,password=password)<Option>"
+ROOT() UTILITY(source) PROCESSSUBSTITUTION(<) PIPELINE() UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File> UTILITY(sed) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> UNARYLOGICOP(-not) BRACKET() FLAG(-path) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(gunzip) ARGUMENT({})<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> BRACKET() UNARYLOGICOP(!) FLAG(-iname) ARGUMENT(Regex)<Regex> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-exec::;) UTILITY(ls) ARGUMENT({})<File>
+ROOT(root) T(find) T(./) T(-name) T(*.txt) T(|) T(perl) T(-p) T(-e) T(s/^(.*\/(.*)\.txt)$/mv) T($1) T(.\/foo\/$2.bar.txt/) T(|) T(bash)
+ROOT() UTILITY(rsync) FLAG(-a) FLAG(-f) ARGUMENT(Program)<Program> FLAG(-f) ARGUMENT(Program)<Program> FLAG(-f) ARGUMENT(Program)<Program> ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(false) UTILITY(true)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(echo) ARGUMENT(Regex)<Regex> ARGUMENT({})<Regex>
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(tee) ARGUMENT(File)<File>
+ROOT(root) T(chown) T(${JBOSS_USER}:) T($(dirname) T($JBOSS_PIDFILE)) T(||) T(true)
+ROOT(root) T(find) T(dir) T(-type) T(f) T(-exec) T(md5sum) T({}) T(+) T(>) T(dir.md5)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> UNARYLOGICOP(!) FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(echo) ARGUMENT({})<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-wholename) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(grep) FLAG(-H) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT(root) T(find) T(.) T(-mtime) T(-1) T(|) T(xargs) T(tar) T(--no-recursion) T(-czf) T(myfile.tgz)
+ROOT(root) T(find) T(.) T(-maxdepth) T(1) T(-type) T(d) T(>) T(dirs_to_remove)
+ROOT() UTILITY(mkdir) ARGUMENT(Directory)<Directory>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type>
+ROOT() PIPELINE() UTILITY(uniq) FLAG(-c) UTILITY(sort) FLAG(-n) UTILITY(tail) FLAG(-n) ARGUMENT(Quantity)<Quantity>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-cmin) ARGUMENT(-Quantity)<Quantity>
+ROOT(root) T(find) T(.) T(-name) T(*.txt) T(|) T(python) T(hello.py)
+ROOT(root) T(rsync) T(-urv) T(--progress) T(dir_a) T(dir_b) T(&&) T(rsync) T(-urv) T(--progress) T(dir_b) T(dir_a)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-c) ARGUMENT(Regex)<Regex> ARGUMENT({})<File> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(+Size)<Size> BINARYLOGICOP(-and) FLAG(-size) ARGUMENT(-Size)<Size>
+ROOT(root) T(find) T(.) T(-name) T(openssl) T(2>/dev/null)
+ROOT() UTILITY(curl) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(ssh) ARGUMENT(Regex)<Regex>
+ROOT(root) T(md5=($(md5sum) T(file)))
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(/path/to/dir)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::+) UTILITY(printf) ARGUMENT(%.sX)<Format> ARGUMENT({})<Regex> UTILITY(wc) FLAG(-c)
+ROOT() UTILITY(wc) FLAG(-l) COMMANDSUBSTITUTION() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(column) FLAG(-t) ARGUMENT(File)<File> UTILITY(uniq) FLAG(-w) ARGUMENT(Quantity)<Quantity> FLAG(-c)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-path) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-daystart) FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-mmin) ARGUMENT(+Quantity)<Quantity> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-f) ARGUMENT({})<Path> ARGUMENT(Path)<Path>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-depth) FLAG(-type) ARGUMENT(d)<Type> FLAG(-empty) FLAG(-exec::;) UTILITY(rmdir) ARGUMENT({})<Directory>
+ROOT(root) T(awk) T(NR) T(%) T(2) T(input;) T(awk) T(NR) T(%) T(2) T(==) T(0) T(input)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission> FLAG(-exec::;) UTILITY(ls) FLAG(-l) ARGUMENT({})<File>
+ROOT(root) T(sleep) T(`10`)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-exec::;) UTILITY(sed) FLAG(-i) ARGUMENT(Program)<Program> ARGUMENT({})<File>
+ROOT() UTILITY(cat) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(od) FLAG(-A) ARGUMENT(n)<Option> FLAG(-v) FLAG(-t) ARGUMENT(x1)<Type> UTILITY(tr) FLAG(-d) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(wc) FLAG(-l)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(-Permission)<Permission> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(ls) FLAG(-l) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(chmod) FLAG(-v) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT(root) T(if) T(find) T(`echo) T($some_dir`) T(-maxdepth) T(0) T(-empty) T(|) T(read) T(v;) T(then) T(echo) T(Empty) T(dir;) T(else) T(Dir) T(is) T(NOT) T(empty) T(fi)
+ROOT() UTILITY(date) FLAG(-d) ARGUMENT(Regex)<Regex> ARGUMENT('+%Y-%m-%d')<Format>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(chgrp) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(which) ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(*/201111/*20111130*) T(-name) T(*.jpg) T(-print0) T(|) T(sort) T(-t) T(_) T(-nk2) T(|) T(xargs) T(-0) T(cat) T(|) T(ffmpeg) T(-f) T(image2pipe) T(-framerate) T(30) T(-vcodec) T(mjpeg) T(-i) T(-) T(-vcodec) T(libx264) T(-profile:v) T(baseline) T(-level) T(3.0) T(-movflags) T(+faststart) T(-crf) T(19) T(-pix_fmt) T(yuv420p) T(-r) T(30) T(output.mp4)
+ROOT() PIPELINE() UTILITY(yes) UTILITY(head) FLAG(-n) ARGUMENT(Quantity)<Quantity> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(-Timespan)<Timespan> FLAG(-user) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(ln) FLAG(-s) ARGUMENT({})<File> ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(Path) T(-name) T(Regex) T(-type) T(d) T(-exec) T(mv) T({}) T(File) T(\;) T(-exec) T(mkdir) T(Directory) T(\;) T(-exec) T(sh) T(-c) T(mv) T(File) T(File) T(\;)
+ROOT() PIPELINE() UTILITY(tac) ARGUMENT(File)<File> UTILITY(sed) ARGUMENT(Program)<Program> UTILITY(tac)
+ROOT(root) T(sudo) T(setfacl) T(-R) T(-m) T(u:www-data:rwx) T(-m) T(u:`whoami`:rwx) T(app/cache) T(app/logs)
+ROOT() UTILITY(basename) OPERATOR(--) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print) UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-l) FLAG(-i) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT(root) T(top) T(-l) T(1) T(-s) T(0) T(-stats) T(mem) T(-pid) T(PID)
+"ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> BRACKET() FLAG(-ctime) ARGUMENT(Timespan)<Timespan> BINARYLOGICOP(-or) FLAG(-atime) ARGUMENT(Timespan)<Timespan> BINARYLOGICOP(-or) FLAG(-mtime) ARGUMENT(Timespan)<Timespan> FLAG(-printf) ARGUMENT(""./%P\n"")<Format>"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-exec::;) UTILITY(file) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-newermt) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(mv) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex>
+ROOT(root) T(rsync) T(-avz) T(-e) T(ssh) T(-p) T($portNumber) T(user@remote.host:/path/to/copy) T(/local/path)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) BRACKET() UNARYLOGICOP(!) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0)
+ROOT() PIPELINE() UTILITY(ls) ARGUMENT(File)<File> UTILITY(tee) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(od) FLAG(-t) ARGUMENT(x1)<Type> FLAG(-A) ARGUMENT(n)<Option> ARGUMENT(File)<File> UTILITY(head)
+ROOT() UTILITY(rename) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) FLAG(-type) ARGUMENT(f)<Type> UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(read) FLAG(-a) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-atime) ARGUMENT(-Timespan)<Timespan>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(ls) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(seq) ARGUMENT(Number)<Number> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() PIPELINE() UTILITY(tac) ARGUMENT(File)<File> UTILITY(sed) FLAG(-n) FLAG(-e) ARGUMENT(Program)<Program> UTILITY(tac) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-group) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type>
+"ROOT(root) T(find) T(.) T(-type) T(d) T(-depth) T(1) T(-print0) T(|) T(xargs) T(-0) T(sh) T(-c) T(for) T(dir;) T(do) T(pushd) T(""$dir"") T(&&) T(latexmk) T(-c) T(&&) T(popd;) T(done) T(fnord)"
+ROOT() UTILITY(chown) COMMANDSUBSTITUTION() UTILITY(stat) FLAG(-c) ARGUMENT(%u:%g)<Regex> ARGUMENT($srcdir)<File> ARGUMENT($dstdir)<File>
+ROOT() UTILITY(mktemp) FLAG(-u) FLAG(-p) ARGUMENT(Regex)<Directory>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(l)<Type>
+ROOT(root) T(ld) T(--verbose) T(|) T(grep) T(SEARCH_DIR) T(|) T(tr) T(-s) T(;) T(\012)
+ROOT() UTILITY(sed) FLAG(-n) ARGUMENT(Program)<Program>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(grep) FLAG(-H) FLAG(-i) FLAG(-n) ARGUMENT(Regex)<Regex> ARGUMENT({})<File> UTILITY(basename) COMMANDSUBSTITUTION() UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UTILITY(grep) FLAG(-i) ARGUMENT(Regex)<Regex>
+ROOT(root) T(brew) T(--prefix)
+"ROOT(root) T(seq) T(5) T(|) T(perl) T(-ne) T(chomp;) T(print) T(""$_) T("";) T(END{print) T(""\n""})"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-empty) FLAG(-exec::;) UTILITY(rmdir) ARGUMENT({})<Directory>
+ROOT(root) T($() T(readlink) T(-f) T($() T(dirname) T(Regex)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print) UTILITY(cpio) FLAG(-p) FLAG(-d) FLAG(-m) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(rsync) FLAG(-a) FLAG(--relative) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT(root) T(find) T(/) T(-name) T(*.md) T(-type) T(f) T(-exec) T(markdown) T(-o) T({}.html) T({}) T(;)
+ROOT(root) T(find) T(.|grep) T(FooBar|yargs) T(-l) T(203) T(cp) T(--after) T(~/foo/bar)
+ROOT() UTILITY(touch) FLAG(-r) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(pstree) ARGUMENT(Regex)<Regex>
+ROOT(root) T(grep) T(-v) T(pattern) T(file) T(>) T(temp) T(&&) T(mv) T(temp) T(file)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-size) ARGUMENT(-Size)<Size> FLAG(-print)
+ROOT() UTILITY(fg)
+ROOT() UTILITY(set) FLAG(-e)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(d)<Type> FLAG(-print) UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(echo) ARGUMENT(Regex)<Regex> ARGUMENT({})<Regex>
+ROOT() UTILITY(uname) FLAG(-r)
+ROOT() UTILITY(ping) FLAG(-w) ARGUMENT(Timespan)<Timespan> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(touch) FLAG(-d) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(du) FLAG(-a) ARGUMENT(File)<File> UTILITY(sort) FLAG(-n) FLAG(-r) UTILITY(head)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT(root) T(xxx) T(|&) T(tee) T(/dev/null)
+ROOT(root) T(v=$(whoami) T(|) T(perl) T(-e) T(print) T(uc) T(<>))
+ROOT() UTILITY(scp) FLAG(-r) ARGUMENT(File)<File> ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-empty) FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-ls)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(echo) ARGUMENT({})<Regex> ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(d)<Type> UTILITY(awk) FLAG(-F) ARGUMENT(Regex)<Regex> ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> UNARYLOGICOP(-prune)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(ifconfig) UTILITY(grep) FLAG(-o) FLAG(-P) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(echo) FLAG(-e) ARGUMENT(Regex)<Regex> UTILITY(nl)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::+) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT(root) T(diff) T(<(fold) T(-w1) T(<<<) T($s)) T(<(fold) T(-w1) T(<<<) T($r)) T(|) T(awk) T(/[<>]/{printf) T($2})
+ROOT() COMMANDSUBSTITUTION() UTILITY(dirname) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> UTILITY(xargs) FLAG(-i) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) FLAG(-f) ARGUMENT({})<File> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(dig) ARGUMENT(Regex)<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT(root) T(read) T(-a) T(arr) T(<<<) T(1) T(4) T(6) T(9) T(11) T(17) T(22)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-exec::;) UTILITY(grep) FLAG(-i) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT(root) T(curl) T(-x) T(http://proxy_server:proxy_port) T(--proxy-user) T(username:password) T(-L) T(http://url)
+ROOT() PIPELINE() UTILITY(df) FLAG(-P) ARGUMENT(File)<File> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() PIPELINE() UTILITY(yes) ARGUMENT(Regex)<Regex> UTILITY(rm) FLAG(-i) FLAG(-r) ARGUMENT(File)<File> ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(which) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(fold) FLAG(-w) ARGUMENT(1)<Quantity> ARGUMENT(file)<File> UTILITY(pr) ARGUMENT(-4t)<File> UTILITY(sed) ARGUMENT(s/\s*-\s*//g)<Program> UTILITY(tr) FLAG(-d) ARGUMENT(\n)<Regex> UTILITY(sed) ARGUMENT($a\)<Program>
+ROOT(root) T(top) T(-l) T(1) T(-s) T(0) T(-stats) T(mem) T(-pid) T($PID)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-and) FLAG(-type) ARGUMENT(d)<Type> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-print)
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(xargs)
+ROOT(root) T(ldd) T(/bin/*) T(/usr/bin/*) T(...) T(|) T(sed) T(-e) T(/^[^\t]/) T(d;) T(s/^\t\(.*) T(=>) T(\)\?\([^) T(]*\)) T((.*/\2/g) T(|) T(sort) T(|) T(uniq) T(-c)
+ROOT() PIPELINE() UTILITY(watch) FLAG(-d) UTILITY(top) FLAG(-n) ARGUMENT(1)<Quantity> UTILITY(grep) ARGUMENT(mysql)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-print) UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(ls) FLAG(-l) FLAG(-d) ARGUMENT({})<File> UTILITY(more)
+ROOT(root) T(who) T(|) T(grep) T($(tty) T(|) T(sed) T('s:/dev/::'))
+ROOT(root) T(find) T(/ghi) T(/jkl) T(-type) T(f) T(-name) T(abc.def) T(2>) T(/dev/null) T(-exec) T(ls) T({}) T(;) T(-exec) T(cat) T({}) T(;)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-type) ARGUMENT(f)<Type> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(od) FLAG(-A) ARGUMENT(n)<Option> FLAG(-N) ARGUMENT(File)<File> FLAG(-t) ARGUMENT(u2)<Type> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(echo) FLAG(-n) ARGUMENT(Regex)<Regex> UTILITY(md5sum)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-exec::;) UTILITY(cat) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-perm) ARGUMENT(-Permission)<Permission>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(rmdir) COMMANDSUBSTITUTION() UTILITY(dirname) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(read) FLAG(-r) FLAG(-s) FLAG(-p) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(nl) FLAG(-b) ARGUMENT(a)<Option> FLAG(-s) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(chmod) ARGUMENT(+Permission)<Permission> ARGUMENT(File)<File>
+ROOT(root) T(time) T(-o) T(time.log) T(command)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> UTILITY(grep) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(cp) ARGUMENT({})<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(dirname) ARGUMENT({})<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(mv) ARGUMENT({})<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(ping) ARGUMENT(Regex)<Regex> FLAG(-c) ARGUMENT(Quantity)<Quantity> UTILITY(grep) FLAG(-E) FLAG(-o) ARGUMENT(Regex)<Regex> UTILITY(cut) FLAG(-f) ARGUMENT(Number)<Number> FLAG(-d) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(ls) FLAG(-l) FLAG(-r) FLAG(-t) ARGUMENT({})<File> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex> BRACKET() FLAG(-type) ARGUMENT(d)<Type> BINARYLOGICOP(-or) FLAG(-type) ARGUMENT(f)<Type> FLAG(-mtime) ARGUMENT(-Timespan)<Timespan>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-delete)
+ROOT() PIPELINE() UTILITY(yes) ARGUMENT(Regex)<Regex> UTILITY(bash)
+ROOT() UTILITY(tail) FLAG(-n) ARGUMENT(+Quantity)<Quantity> ARGUMENT(File)<File>
+ROOT(root) T(find) T(.) T(-name) T(*.txt) T(-printf) T(%f\n) T(>) T(/tmp/a)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-path) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(tr) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT(root) T(fold) T(-w30) T(longline) T(|) T(pr) T(-20ts|)
+ROOT() UTILITY(cd) COMMANDSUBSTITUTION() PIPELINE() UTILITY(ls) FLAG(-d) ARGUMENT(File)<File> UTILITY(grep) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-path) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT('d')<Type> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rmdir) ARGUMENT({})<Directory>
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(cat)
+ROOT() UTILITY(dig) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(ps) FLAG(-a) FLAG(-u) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(pstree) ARGUMENT({})<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-amin) ARGUMENT(+Quantity)<Quantity> FLAG(-amin) ARGUMENT(-Quantity)<Quantity>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(d)<Type>
+ROOT(root) T(gzip) T(-c) T(mysqldbbackup.sql) T(|) T(uuencode) T(mysqldbbackup.sql.gz) T(|) T(mail) T(-s) T(MySQL) T(DB) T(backup@email.com)
+ROOT() PIPELINE() UTILITY(date) ARGUMENT(+%a)<Format> UTILITY(tr) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(/) T(-name) T(myfile) T(-type) T(f) T(-print) T(2>) T(/dev/null)
+ROOT(root) T(ls) T(-hal) T(/root/) T(>) T(/root/test.out)
+"ROOT() COMMANDSUBSTITUTION() UTILITY(date) FLAG(-u) FLAG(-d) ARGUMENT(Regex)<Regex> ARGUMENT(+""%s"")<Format>"
+ROOT(root) T(curl) T(-s) T(http://page.that.serves.json.com/json/) T(|) T(json_xs)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> UTILITY(cpio) FLAG(-p) FLAG(-d) FLAG(-v) FLAG(-m) ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(.) T(-iname) T(*.jar) T(|) T(xargs) T(-n1) T(zipinfo)
+ROOT() UTILITY(mktemp) FLAG(--dry-run) ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(/target/path) T(-type) T(f) T(-exec) T(your_command_here) T({}) T(;)
+ROOT() UTILITY(ls) FLAG(-l) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(ifconfig) ARGUMENT(Regex)<Regex> UTILITY(sed) FLAG(-n) ARGUMENT(Program)<Program>
+ROOT() UTILITY(ssh) FLAG(-l) ARGUMENT(Regex)<Regex> FLAG(-p) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT(root) T(ps) T(aux)
+ROOT(root) T(find) T(.) T(-name) T(.git) T(-prune) T(-o) T(-type) T(f) T(-exec) T(perl) T(-i) T(-pe) T(s/\Q$1\E/\L$2\E/i) T({}) T(+)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() UTILITY(which) FLAG(-a) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(sort) ARGUMENT(File)<File> UTILITY(uniq) UTILITY(cut) FLAG(-f) ARGUMENT(Number)<Number> FLAG(-d) ARGUMENT(Regex)<Regex> UTILITY(uniq) FLAG(-c) UTILITY(rev)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(wc) FLAG(-l) ARGUMENT(File)<File>
+ROOT() UTILITY(bzip2) FLAG(-k) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-perm) ARGUMENT(-Permission)<Permission>
+ROOT(root) T(setarch) T(`uname) T(-m`) T(-R) T(./yourProgram)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(.)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-maxdepth) ARGUMENT(1)<Quantity> UNARYLOGICOP(!) FLAG(-name) ARGUMENT(.*)<Regex> FLAG(-exec::+) UTILITY(printf) ARGUMENT(%.0s.\n)<Format> ARGUMENT({})<Regex> UTILITY(wc) FLAG(-l)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(d)<Type> FLAG(-exec::;) UTILITY(rm) FLAG(-r) ARGUMENT({})<File>
+ROOT(root) T(for) T(d) T(in) T(/home/*/;) T(do) T(find) T($d) T(-type) T(d) T(-name) T(bin) T(|) T(grep) T(-q) T(.) T(||) T(echo) T($d;) T(done)
+ROOT() UTILITY(shred) FLAG(-v) FLAG(-n) ARGUMENT(File)<File> FLAG(-z) FLAG(-u) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-empty) UNARYLOGICOP(-not) FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT(root) T(ssh) T(-t) T(Regex) T(command)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(cp) FLAG(--parents) ARGUMENT({})<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-perm) ARGUMENT(-Permission)<Permission> FLAG(-printf) ARGUMENT('%p has world write -permissions\n')<Format>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> BRACKET() FLAG(-iname) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(mount) UTILITY(sed) FLAG(-n) FLAG(-e) ARGUMENT(Program)<Program>
+ROOT() PIPELINE() UTILITY(yes) UTILITY(cat) FLAG(-n) UTILITY(head) FLAG(-) ARGUMENT(Quantity)<Quantity> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-execdir::;) UTILITY(rename) ARGUMENT(Regex)<Regex> ARGUMENT({})<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-n) FLAG(-H) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(stat) FLAG(--printf) ARGUMENT(%y)<Regex> ARGUMENT(%n\n)<File> COMMANDSUBSTITUTION() UTILITY(ls) FLAG(-t) FLAG(-r) COMMANDSUBSTITUTION() UTILITY(find) ARGUMENT(*)<Path> FLAG(-type) ARGUMENT(f)<Type>
+ROOT() UTILITY(source) PROCESSSUBSTITUTION(<) UTILITY(echo) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-printf) ARGUMENT('%T@ %p\n')<Format> UTILITY(sort) FLAG(-n) FLAG(-r) UTILITY(head) FLAG(-) ARGUMENT(Quantity)<Quantity> UTILITY(cut) FLAG(-f) ARGUMENT(Number)<Number> FLAG(-d) ARGUMENT(Regex)<Regex> UTILITY(sed) FLAG(-e) ARGUMENT(Program)<Program> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(ls) FLAG(-U) FLAG(-l) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type>
+ROOT() UTILITY(find) ARGUMENT(.)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::+) UTILITY(printf) ARGUMENT(%.0sbla\n)<Format> ARGUMENT({})<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(md5sum) ARGUMENT({})<File> UTILITY(sort) UTILITY(uniq) FLAG(-D) ARGUMENT(w32)<Option>
+ROOT() UTILITY(split) FLAG(--number) ARGUMENT(Quantity)<Quantity> ARGUMENT(File)<File> ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-printf) ARGUMENT('%20s %p\n')<Format> UTILITY(sort) FLAG(-n) UTILITY(cut) FLAG(-b) ARGUMENT(Number)<Number> UTILITY(tr) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(ls) FLAG(-l) FLAG(-a) FLAG(-S) FLAG(-r) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-nouser) FLAG(-exec::;) UTILITY(chown) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::+) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() UTILITY(rsync) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(sed) ARGUMENT(Program)<Program> FLAG(-i) ARGUMENT(Regex)<File> ARGUMENT({})<File> FLAG(-exec::;) UTILITY(rm) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mindepth) ARGUMENT(Quantity)<Quantity> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(~/container) T(-mindepth) T(3) T(-type) T(f) T(|) T(while) T(read) T(file;) T(do) T(mv) T($file) T($(dirname) T($file)/..;) T(done)
+ROOT(root) T(cat) T(`find) T(.) T(-type) T(f`) T(>) T(out.txt)
+"ROOT(root) T(ping) T(host) T(|) T(perl) T(-nle) T(print) T(scalar(localtime),) T("") T("",) T($_)"
+ROOT() UTILITY(mkdir) ARGUMENT(Directory)<Directory>
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT(root) T(ls) T(-1) T(|) T(perl) T(-l40pe0)
+ROOT() UTILITY(file) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(sed) ARGUMENT(Program)<Program> ARGUMENT(File)<File> UTILITY(split) FLAG(-d) FLAG(-l) ARGUMENT(Quantity)<Quantity> ARGUMENT(File)<File> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(l)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-ls)
+ROOT() PIPELINE() UTILITY(find) FLAG(-P) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UTILITY(rev) UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> UTILITY(rev) UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> UTILITY(sort) UTILITY(uniq) FLAG(-c)
+ROOT() UTILITY(find) FLAG(-L) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(l)<Type>
+ROOT() PIPELINE() UTILITY(uname) FLAG(-m) UTILITY(grep) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(grep) FLAG(-E) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print) UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(grep) FLAG(-w) ARGUMENT(Regex)<Regex> ARGUMENT({})<File> FLAG(-print) UTILITY(grep) ARGUMENT(Regex)<Regex>
+ROOT(root) T(ln) T(-s) T(`canonical.bash) T(foo`) T(bar)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-type) ARGUMENT(f)<Type> FLAG(-size) ARGUMENT(+Size)<Size> FLAG(-ls)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-E) ARGUMENT(Regex)<Regex> ARGUMENT({})<File> UTILITY(grep) FLAG(-E) FLAG(-v) ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(~) T(-type) T(f) NT(<n>) T(-iname) T(*.mp3) T(-o) T(-iname) T(*.ogg) T(>) T(mynewplaylist.m3u)
+ROOT(root) T(sed) T(-i) T($() T(whoami)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> UTILITY(grep) FLAG(-E) FLAG(-v) ARGUMENT(Regex)<Regex> UTILITY(less)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-atime) ARGUMENT(-Timespan)<Timespan> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(ssh) ARGUMENT(Regex)<Regex> FLAG(-l) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-xdev) FLAG(-inum) ARGUMENT(Quantity)<Quantity> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT(root) T(echo) T($() T(basename) T($() T(dirname) T($() T(dirname) T(Regex)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-mtime) ARGUMENT(-Timespan)<Timespan>
+ROOT() UTILITY(pushd) ARGUMENT(Directory)<Directory>
+ROOT() PIPELINE() UTILITY(mount) UTILITY(tail) FLAG(-) ARGUMENT(Quantity)<Quantity> UTILITY(sed) FLAG(-e) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-user) ARGUMENT(Regex)<Regex>
+ROOT(root) T(cowsay) T(hello) T(|) T(rev)
+ROOT(root) T(tmux) T(set-option) T(-g) T(history-limit) T(10000)
+ROOT(root) T(echo) T($() T(seq) T(Number)
+ROOT() UTILITY(fold) FLAG(-w) ARGUMENT(Quantity)<Quantity> FLAG(-s) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> UNARYLOGICOP(-not) FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(.) NT(<n>) T(-size) T(100) T(-o) T(-size) T(-100) T(-name) T(*.html) T(-exec) T(ls) T(-l) T({}) T(;) T(2>) T(/dev/null)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-delete)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-ctime) ARGUMENT(-Timespan)<Timespan> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-r) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(mv) FLAG(-t) ARGUMENT(Directory)<Directory> ARGUMENT({})<File>
+ROOT() UTILITY(chgrp) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(basename) ARGUMENT(Regex)<Regex> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(-Number)<Number>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(Size)<Size>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-perm) ARGUMENT(-Permission)<Permission>
+ROOT(root) T(grep) T($() T(cat) T(File)
+ROOT(root) T(find) T(.) T(-iname) T($srch*) T(-exec) T(grep) T(Processed) T(Files) T({}) T(;) T(-print|) T(sed) T(-r) T(N;s/(.*)\n(.*)/\2) T(\1/) T(>) T(temp2)
+ROOT() UTILITY(chown) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex>
+"ROOT(root) T(find) T($DiskName) T(-type) T(f) T(-mtime) T(-3) T(-size) T(+5000) T(-exec) T(ls) T(-ld) T({}) T(;) T(2>/dev/null) T(|) T(sort) T(-n) T(-k) T(5.1,5) T(>>) T($TMPFILE)"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(ls) FLAG(-s) ARGUMENT({})<File>
+ROOT(root) T(timex) T(find) T(/tmp) T(-print|backup) T(-ivqf/dev/null)
+ROOT() PIPELINE() UTILITY(mount) UTILITY(grep) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(sed) FLAG(-i) FLAG(-r) ARGUMENT(Program)<Program> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(yes) UTILITY(more)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-printf) ARGUMENT('%d:%p\n')<Format> UTILITY(sort) FLAG(-n) UTILITY(tail) FLAG(-) ARGUMENT(Quantity)<Quantity>
+ROOT() UTILITY(shopt) ARGUMENT(extglob)<Option>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(cp) FLAG(-R) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT(root) T(ps) T(-p) T($$) T(|) T(tail) T(-1) T(|) T(awk) T({print) T($NF})
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> UNARYLOGICOP(!) FLAG(-perm) ARGUMENT(Permission)<Permission>
+ROOT() UTILITY(pushd) COMMANDSUBSTITUTION() UTILITY(whoami)
+ROOT() UTILITY(read) FLAG(-p) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(readlink) FLAG(--canonicalize-existing) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(paste) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(sed) FLAG(-i) FLAG(-e) ARGUMENT(Program)<Program> ARGUMENT({})<Program>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission> UTILITY(head)
+ROOT() UTILITY(head) FLAG(-n) ARGUMENT(-Quantity)<Quantity> ARGUMENT(File)<File>
+ROOT() UTILITY(bzip2) FLAG(-k) FLAG(-v) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(sed) ARGUMENT(Program)<Program> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(cp) ARGUMENT(File)<File> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(ls) FLAG(-d) ARGUMENT(File)<File> UTILITY(cut) FLAG(-f) ARGUMENT(Number)<Number> FLAG(-d) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(sed) FLAG(-i) ARGUMENT(Program)<Program> OPERATOR(--) ARGUMENT({})<File>
+ROOT() UTILITY(pwd) FLAG(-P)
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(od) FLAG(-t) ARGUMENT(x1)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-newer) ARGUMENT(File)<File>
+ROOT() UTILITY(chmod) FLAG(-R) ARGUMENT(Permission)<Permission> ARGUMENT(File)<File>
+ROOT() UTILITY(df) FLAG(-h)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(comm) FLAG(-2) FLAG(-3) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> ARGUMENT(File)<File> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(dig) ARGUMENT(Regex)<Regex> ARGUMENT({})<Regex>
+ROOT() PIPELINE() UTILITY(mount) FLAG(-v) UTILITY(grep) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(ls) FLAG(-l) FLAG(-s) FLAG(-R) ARGUMENT({})<File>
+"ROOT(root) T(alias) T(prettify_json=php) T(-E) T($o) T(=) T(json_decode($argn);) T(print) T(json_encode($o,) T(JSON_PRETTY_PRINT);)"
+ROOT() UTILITY(sort) FLAG(-S) ARGUMENT(Size)<Size> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(sed) FLAG(-n) ARGUMENT(Program)<Program> ARGUMENT(File)<File>
+ROOT(root) T(command) T(-1) T(<(gzip) T(-dc) T(file1.gz)) T(-2) T(<(gzip) T(-dc) T(file2.gz))
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-print0) UTILITY(tr) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+"ROOT(root) T(find) T(.) T(-name) T(*$lower1*) T(-exec) T(bash) T(-c) T(mv) T(""$1"") T(""${1/$2/$3}"") T(--) T({}) T($lower1) T($lower2) T(;)"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UNARYLOGICOP(!) FLAG(-perm) ARGUMENT(-Permission)<Permission>
+ROOT(root) T(find) T(.) T(-name) T(*-GHBAG-*) T(-exec) T(bash) T(-c) T(mv) T($0) T(${0/GHBAG/stream-agg}) T({}) T(;)
+ROOT() UTILITY(column) FLAG(-t) FLAG(-s) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() UTILITY(read) FLAG(-n) ARGUMENT(Quantity)<Quantity> FLAG(-r) FLAG(-p) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(chown) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT(root) T(IFS=) T(read) T(-t) T(0.01) T(-d) T(-n1) T(keypress)
+"ROOT(root) T(find) T(-type) T(f) T(-name) T(*.au) T(|) T(awk) T({printf) T(""%s) T(%s\n"",$0,$0"".wav"") T(}) T(|) T(xargs) T(sox)"
+ROOT() PIPELINE() UTILITY(tac) ARGUMENT(File)<File> UTILITY(sed) ARGUMENT(Program)<Program> UTILITY(tac)
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(find) ARGUMENT({})<Path> FLAG(-mindepth) ARGUMENT(Quantity)<Quantity> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(d)<Type>
+ROOT() UTILITY(read) FLAG(-p) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-fprint) ARGUMENT(File)<File>
+ROOT(root) T(find) T(~) T(-name) T(Foto*) T(>) T(results.txt)
+ROOT(root) T(cat) T(message.txt) T(|) T(mail) T(-s) T(Backup) T(-a) T(mysqldbbackup.sql) T(backup@email.com)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> BRACKET() FLAG(-iname) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-not) FLAG(-perm) ARGUMENT(-Permission)<Permission>
+ROOT(root) T(awk) T(-F) T(Regex) T(Program) T(<() T(zcat) T(Regex)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-perm) ARGUMENT(Permission)<Permission> UTILITY(wc) FLAG(-l)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mindepth) ARGUMENT(Quantity)<Quantity> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(d)<Type> UTILITY(grep) ARGUMENT(Regex)<Regex> UTILITY(tr) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(ln) FLAG(-s) FLAG(-t) ARGUMENT(Directory)<Directory> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT($sourcePath)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-mtime) ARGUMENT(+10)<Timespan> FLAG(-name) ARGUMENT(*.log)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<ReservedWord> UTILITY(zip) FLAG(-j) FLAG(-m) FLAG(-T) ARGUMENT($zipFile)<File> FLAG(-@) ARGUMENT({})<ReservedWord>
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(f)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-follow) FLAG(-lname) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> UTILITY(grep) FLAG(-E) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) FLAG(-r) FLAG(-f) ARGUMENT({})<File>
+ROOT(root) T(find) T(/path/to/folders/) T(-name) T(*.emlx) T(-print0) T(>) T(filelist)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-printf) ARGUMENT('%p %s\n')<Format> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT(root) T(cd) T(`which) T(<file>) T(|) T(xargs) T(dirname`)
+ROOT() UTILITY(chmod) ARGUMENT(Permission)<Permission> FLAG(-R) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(tac) UTILITY(sed) FLAG(-n) ARGUMENT(Program)<Program> UTILITY(tac)
+ROOT(root) T(kill) T($(ps) T(-o) T(pid=) T(-s) T($(ps) T(-o) T(sess) T(--no-heading) T(--pid) T($(pgrep) T(rsync) T())))
+ROOT() PIPELINE() UTILITY(mount) UTILITY(column) FLAG(-t)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-P) ARGUMENT(Quantity)<Quantity> FLAG(-I) ARGUMENT({})<Regex> UTILITY(rename) ARGUMENT(Regex)<Regex> ARGUMENT({})<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-execdir::;) UTILITY(tar) FLAG(-c) FLAG(-v) FLAG(-f) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(d)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-exec::;) UTILITY(rm) FLAG(-f) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> BRACKET() FLAG(-exec::;) UTILITY(echo) ARGUMENT({})<Regex> BINARYLOGICOP(-or) FLAG(-exec::;) UTILITY(true) FLAG(-exec::;) UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(mkdir) ARGUMENT(Directory)<Directory>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-n) ARGUMENT(Quantity)<Quantity> FLAG(-I) ARGUMENT({})<Regex> UTILITY(dirname) ARGUMENT({})<Regex> UTILITY(sort) UTILITY(uniq)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> UNARYLOGICOP(!) FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(cd) COMMANDSUBSTITUTION() UTILITY(readlink) ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-atime) ARGUMENT(-Timespan)<Timespan>
+"ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-printf) ARGUMENT(""%f\n"")<Format>"
+ROOT(root) T(tail) T(-n) T(1) T($file) T(|) T(tee) T(>(wc) T(-c) T(|) T(xargs) T(-I) T({}) T(truncate) T($file) T(-s) T(-{}))
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(-Timespan)<Timespan>
+ROOT() UTILITY(md5sum) ARGUMENT(File)<File>
+ROOT(root) T(bar) T(file1) T(|) T(wc) T(-l)
+ROOT(root) T(find) T(/stuff) T(-type) T(d) T(-printf) T(%P\0) T(|) T(xargs) T(-0) T(script.py)
+ROOT(root) T(yes) T(|) T(tr) T(\n) T(x) T(|) T(head) T(-c) T($BYTES) T(|) T(pv) T(|) T(grep) T(n)
+ROOT() UTILITY(info) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(chmod) ARGUMENT(+Permission)<Permission> ARGUMENT({})<File>
+ROOT(root) T(find) T(.) T(-exec) T(myscript) T({}) T(+)
+ROOT() PIPELINE() UTILITY(jobs) FLAG(-s) FLAG(-l) UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT(root) T(find) T(Path) T(-newermt) T($() T(date) T(+%Y-%m-%d) T(-d) T(Regex)
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-n) ARGUMENT(Quantity)<Quantity> UTILITY(grep) FLAG(-r) ARGUMENT({})<Regex>
+ROOT(root) T(find) T(/etc) T(-type) T(f) T(|) T(xargs) T(--max-lines=1) T(-r) T(--max-procs=20) T(./do1.sh)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> ARGUMENT(Path)<Path> UTILITY(grep) FLAG(-v) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mindepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(f)<Type>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print) BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT() PIPELINE() UTILITY(history) UTILITY(grep) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type>
+ROOT() PIPELINE() UTILITY(env) UTILITY(uniq) UTILITY(sort) FLAG(-r) UTILITY(grep) ARGUMENT(Regex)<Regex>
+ROOT(root)
+ROOT(root) T(brew) T(info) T(grc)
+ROOT() PIPELINE() UTILITY(sort) ARGUMENT(File)<File> UTILITY(rev) UTILITY(uniq) FLAG(-f) ARGUMENT(Quantity)<Quantity> UTILITY(rev)
+ROOT(root) T(pushd) T($() T(dirname) T($() T(which) T(Regex)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(-Permission)<Permission>
+ROOT(root) T(find) T(Path) T($() T(uname) T(-r)
+ROOT(root) T(join) T(<() T(sort) T(File)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(cd) ARGUMENT(Directory)<Directory>
+ROOT() UTILITY(less) COMMANDSUBSTITUTION() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-type) ARGUMENT(f)<Type> FLAG(-daystart) FLAG(-mtime) ARGUMENT(-Timespan)<Timespan>
+ROOT() UTILITY(wc) COMMANDSUBSTITUTION() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT(root) T(find) T(.) T(-type) T(f) T(-name) T(*.ext) T($(printf) T(!) T(-name) T(%s) T($(cat) T(list.txt)))
+ROOT() PIPELINE() UTILITY(dig) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT(root) T(su) T(-) T(username) T(command)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(rm) FLAG(-r) FLAG(-f) ARGUMENT({})<File>
+ROOT(root) T(find) T(/.) T(-name) T(toBeSearched.file) T(2>/dev/null)
+ROOT() UTILITY(dig) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-n) ARGUMENT(Quantity)<Quantity> FLAG(-I) ARGUMENT({})<Regex> UTILITY(mv) ARGUMENT({})<File> ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-print) UTILITY(sed) ARGUMENT(Program)<Program>
+ROOT(root) T(find) T(/) T(-name) T(grub.conf) T(>&) T(/dev/null)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> UTILITY(cpio) FLAG(-p) FLAG(-m) FLAG(-u) FLAG(-d) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program> UTILITY(bash)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan>
+ROOT(root) T(find) T(-maxdepth) T(1) T(-type) T(d) T(|) T(sort) T(|) T(while) T(read) T(-r) T(dir;) T(do) T(n=$(find) T($dir) T(-type) T(f) T(|) T(wc) T(-l);) T(if) T([) T($n) T(-gt) T(0) T(];) T(then) T(printf) T(%4d) T(:) T(%s\n) T($n) T($dir;) T(fi;) T(done)
+ROOT() PIPELINE() UTILITY(who) UTILITY(awk) ARGUMENT(Program)<Program> UTILITY(sed) FLAG(-e) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-type) ARGUMENT(f)<Type> FLAG(-exec::;) UTILITY(chmod) ARGUMENT(Permission)<Permission> ARGUMENT({})<File>
+ROOT(root) T(find) T(.) T(-name) T(*.txt) T(|) T(while) T(IFS=) T(read) T(-r) T(FILE;) T(do) T(echo) T(Copying) T($FILE..;) T(cp) T($FILE) T(/destination;) T(done)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-empty)
+ROOT(root) T(find) T(.) T(-user) T(<userid>)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-delete)
+ROOT(root) T(find) T(.) T(-type) T(f) T(-wholename) T(*.mbox) T(-print0) T(|) T(parallel) T(-0) T(mv) T({}) T({.})
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(wc) ARGUMENT({})<File>
+ROOT(root) T(find) T(`gen_root_dirs.sh`) T(-type) T(f) T(-size) T(0) T(-ls)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> UNARYLOGICOP(!) FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT(root) T(alias) T(-s) T(py=$EDITOR)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print) UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(sed) FLAG(-i) ARGUMENT(Program)<Program> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-fstype) ARGUMENT(ext2)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-user) ARGUMENT(Regex)<Regex> FLAG(-iname) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(bind) FLAG(-p) UTILITY(grep) FLAG(-a) ARGUMENT(Regex)<Regex>
+ROOT(root) T(echo) T($() T(pwd)
+ROOT() UTILITY(mktemp) FLAG(-t) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-size) ARGUMENT(+Size)<Size> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(du) FLAG(-s) FLAG(-h) ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-maxdepth) ARGUMENT(Quantity)<Quantity> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print0) UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(zcat) ARGUMENT({})<Regex> UTILITY(awk) FLAG(-F) ARGUMENT(Regex)<Regex> ARGUMENT(Program)<Program>
+"ROOT(root) T(cal) T(02) T(2012|perl) T(-F(.{1,3})) T(-anEBEGIN{$,=""\t&"";$\=""\t\\\\\n""}$.==1||eof||do{$i//=@F;print@F[map{$_*2-1}(1..$i/2)]})"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(rm) ARGUMENT({})<File>
+ROOT() UTILITY(ln) FLAG(-s) ARGUMENT(File)<File> ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(hostname) UTILITY(tr) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex> UTILITY(tr) FLAG(-d) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-path) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-exec::;) UTILITY(rm) ARGUMENT({})<File>
+ROOT(root) T(find) T(/some/dir/) T(-type) T(f) T(>) T(somefile)
+ROOT() UTILITY(echo) COMMANDSUBSTITUTION() UTILITY(pwd)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() PIPELINE() UTILITY(dig) FLAG(-x) ARGUMENT(Regex)<Regex> UTILITY(awk) ARGUMENT(Program)<Program>
+ROOT(root) T(find) T(-x) T(data) T(-name) T(filepattern-*2009*) T(-print0) T(>) T(filesOfInterest.txt)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(Timespan)<Timespan>
+ROOT(root) T(echo) T($[4/0]) T(||) T(exit) T($?)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(ls) FLAG(-1) FLAG(-b) UTILITY(tr) ARGUMENT(Regex)<Regex> ARGUMENT(Regex)<Regex>
+ROOT(root) T(column) T(-x) T(<<<) T($(printf) T('%s\n') T($module))
+ROOT(root) T(find) T(./) T(-name) T(*~) T(|) T(xargs>) T(rm)
+ROOT(root) T(yum) T(search) T(mysql) T(|) T(grep) T(client)
+ROOT() UTILITY(ping) ARGUMENT(Regex)<Regex> FLAG(-I) ARGUMENT(Regex)<Regex> FLAG(-c) ARGUMENT(Quantity)<Quantity>
+ROOT() UTILITY(mv) ARGUMENT(File)<File> ARGUMENT(File)<File>
+ROOT(root) T(diff) T(--suppress-common-lines) T(--speed-large-files) T(-y) T(File1) T(File2) T(|) T(wc) T(-l)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(diff) FLAG(-u) ARGUMENT(Quantity)<Quantity> ARGUMENT(File)<File> UTILITY(grep) FLAG(-E) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-iname) ARGUMENT(Regex)<Regex> FLAG(-exec::;) UTILITY(ls) FLAG(-l) FLAG(-r) FLAG(-t) ARGUMENT({})<File> UTILITY(awk) FLAG(-F) ARGUMENT(Regex)<Regex> ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) FLAG(-print)
+ROOT(root) T(su) T(-) T(username)
+ROOT() PIPELINE() UTILITY(cat) ARGUMENT(File)<File> UTILITY(od) FLAG(-c)
+ROOT(root) T(tr) T(-d) T(\n\r) T(<) T(yourfile.txt)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-perm) ARGUMENT(Permission)<Permission>
+ROOT() UTILITY(mkdir) ARGUMENT(Directory)<Directory>
+ROOT() PIPELINE() UTILITY(echo) ARGUMENT(Regex)<Regex> UTILITY(rev) UTILITY(cut) FLAG(-d) ARGUMENT(Regex)<Regex> FLAG(-f) ARGUMENT(Number)<Number> UTILITY(rev)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-exec::;) UTILITY(ls) FLAG(-a) FLAG(-l) FLAG(-g) FLAG(-d) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-ok::;) UTILITY(tar) FLAG(-r) FLAG(-v) FLAG(-f) ARGUMENT(File)<File> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-daystart) FLAG(-mtime) ARGUMENT(Timespan)<Timespan>
+ROOT() UTILITY(chmod) FLAG(-R) FLAG(-f) ARGUMENT(Permission)<Permission> ARGUMENT(File)<File>
+ROOT(root) T(grep) T(-q) T(tar) T(archive) T(<<<$filetype)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-mtime) ARGUMENT(+Timespan)<Timespan> FLAG(-type) ARGUMENT(d)<Type> FLAG(-exec::;) UTILITY(rmdir) ARGUMENT({})<Directory>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-perm) ARGUMENT(Permission)<Permission> FLAG(-exec::;) UTILITY(ls) FLAG(-l) ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-group) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(tail) FLAG(-n) ARGUMENT(+Quantity)<Quantity> ARGUMENT(File)<File> UTILITY(split) FLAG(-l) ARGUMENT(Quantity)<Quantity> ARGUMENT(File)<File> ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(grep) FLAG(-E) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(watch) FLAG(-d) UTILITY(ls) FLAG(-l)
+"ROOT(root) T(tar) T(tzvf) T(archive.tar.gz) T(|) T(sed) T(s/) T(\+/) T(/g) T(|) T(cut) T(-f3) T(-d) T(|) T(sed) T(2,$s/^/+) T(/) T(|) T(paste) T(-sd) T(|) T(bc)"
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> BRACKET() FLAG(-type) ARGUMENT(d)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> UNARYLOGICOP(-prune) BINARYLOGICOP(-or) BRACKET() FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-print)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-execdir::;) UTILITY(diff) FLAG(-u) ARGUMENT({})<Quantity> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-atime) ARGUMENT(+Timespan)<Timespan>
+ROOT(root) T(mkdir) T(dir2;) T(find) T(dir1) NT(<n>) T(-type) T(l) T(-o) T(-type) T(f) T(-not) T(-wholename) T(*/exclude/*) T(-exec) T(cp) T(-P) T(--parents) T({}) T(dir2/) T(;)
+ROOT() UTILITY(cd) FLAG(-L) ARGUMENT(Directory)<Directory>
+ROOT(root) T(find) T(/path/to/dir) T(-name) T(*.pdf) T(-exec) T(convert) T(-thumbnail) T(x80) T({}[0]) T({}-thumb.png) T(;)
+ROOT(root)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-size) ARGUMENT(+Size)<Size>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(sed) ARGUMENT(Program)<Program> UTILITY(sed) ARGUMENT(Program)<Program> UTILITY(sh)
+ROOT() PIPELINE() UTILITY(nl) FLAG(-n) ARGUMENT(rz)<Format> FLAG(-w) ARGUMENT(Quantity)<Quantity> FLAG(-s) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File> UTILITY(sed) FLAG(-r) ARGUMENT(Program)<Program>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(less) FLAG(-p) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> FLAG(-regex) ARGUMENT(Regex)<Regex>
+ROOT() UTILITY(info) ARGUMENT(Regex)<Regex> FLAG(--index-search) ARGUMENT(Regex)<Regex>
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-print) UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(chown) ARGUMENT(Regex)<Regex> ARGUMENT({})<File>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(f)<Type> BRACKET() FLAG(-name) ARGUMENT(Regex)<Regex> BINARYLOGICOP(-or) FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-exec::+) UTILITY(wc) FLAG(-l) ARGUMENT({})<File>
+ROOT() UTILITY(kill) COMMANDSUBSTITUTION() UTILITY(jobs) FLAG(-p)
+ROOT(root) T(find) T(.) T(-maxdepth) T(1) T(|) T(sort) T(>) T(a)
+ROOT(root) T(yum) T(install) T(-y) T(nodejs)
+"ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-type) ARGUMENT(d)<Type> FLAG(-printf) ARGUMENT(""newdir/%P\0"")<Format> UTILITY(xargs) FLAG(-0) FLAG(-I) ARGUMENT({})<Regex> UTILITY(mkdir) FLAG(-p) ARGUMENT({})<Directory>"
+ROOT() UTILITY(scp) FLAG(-r) ARGUMENT(File)<File>
+ROOT(root) T(zcat) T(biglogfile.gz) T(|) T(split) T(-l500000) T(--filter=gzip) T(>) T($FILE.gz)
+ROOT(root) T(find) T(path/to/folder) T(-type) T(f) T(-print0) T(|) T(sort) T(-z) T(|) T(xargs) T(-0) T(cat) T(|) T(sha1sum)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex>
+ROOT(root) T(sudo) T(find) T(.) NT(<n>) T(-name) T(*.log) T(-o) T(-name) T(*.trc) T(-mtime) T(-1) T(|) T(sudo) T(xargs) T(ls) T(-ltr) T(--color) T(|) T(less) T(-R)
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> FLAG(-execdir::;) UTILITY(rename) ARGUMENT(Regex)<Regex> ARGUMENT({})<Regex>
+ROOT() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-newer) ARGUMENT(File)<File>
+ROOT() PIPELINE() UTILITY(grep) FLAG(-n) FLAG(-i) ARGUMENT(Regex)<Regex> ARGUMENT(File)<File> UTILITY(wc) FLAG(-l)
+ROOT() PIPELINE() UTILITY(pstree) UTILITY(cat)
+ROOT() PIPELINE() UTILITY(find) ARGUMENT(Path)<Path> FLAG(-name) ARGUMENT(Regex)<Regex> UTILITY(tail) FLAG(-) ARGUMENT(Quantity)<Quantity> UTILITY(xargs) FLAG(-I) ARGUMENT({})<Regex> UTILITY(rm) ARGUMENT({})<File>
+ROOT(root) T(top) T(-l) T(1) T(|) T(grep) T($app_name)
+ROOT(root) T(find) T(.) T(2>&1) T(|) T(grep) T(-v) T(Permission) T(denied) T(>) T(some_file)

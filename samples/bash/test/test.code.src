@@ -1,0 +1,1064 @@
+find . -exec printf %s\0 {} ;
+find path ! -name regex -print
+find path -type f -name regex -exec sed program file \;
+find path -name regex -type f -ls
+find path -type f -exec chmod permission {} +
+ifconfig | sed -n program
+rsync -avz --rsh=ssh -p3382 source root@remote_server_name:/opt/backups
+find path -name regex -mtime timespan
+find path -path regex -prune -or -iname regex -print
+"find /path/to/dir -type f | sed -r p;s:.*/(.*)/.*:\1: | xargs -n 2 sh -c sed -i ""s/^/$1 /"" $0"
+find . -name *.cpp | while read f; do dirname $f ; done | sort -u
+ifconfig | grep -o -p regex
+find path -name regex -type d -exec mv {} file \; -exec mkdir directory \; -exec sh -c mv file file \;
+grep -v regex file | wc
+find path -user regex
+false | tee file
+find path -name regex
+find path -type f -atime -timespan -exec ls -l {} \;
+dirs=($(find . -type d))
+split --lines quantity file regex
+find path -name regex -or -maxdepth quantity -mmin +quantity -type f -name regex -delete
+find path -name regex
+find path -mindepth quantity -mmin -quantity | xargs -r -i {} ls -l -d {}
+curl --data-urlencode paramname=param www.example.com
+cut -d regex -f number file
+find path -name regex
+rsync -a -v -z file file
+pstree | grep regex | less -s -e -x
+find path -mtime -timespan -type f
+find path path -name regex
+chmod permission file file file
+find path -type f -iname regex -print0
+find path -name regex
+find path -type l -print | xargs -i {} ls -l -d {} | awk program
+time find . -type f -exec stat {} + > /dev/null
+find path | grep -e -v regex | sort
+find path -type f -exec basename {} \;
+find path -regextype posix-egrep -regex regex -not -path regex -not -path regex -print0 | xargs -0 -i {} ls -l -1 -d {}
+find path -mmin -quantity
+find . -name pattern | xargs git diff --
+comm -2 -3 file file | wc -l
+find path -name regex -type f -print
+find path -name regex
+find path -type d -name regex
+find path -type f -name regex -delete
+find path -name regex -not -path regex
+find -l path -type f -perm -permission
+find path -print0 | tr regex regex
+find path -name regex
+grep -r regex file | awk program | xargs -i {} dirname {}
+find path -name regex -prune -or -type f -print
+cat file | xargs -n quantity -i {} echo regex regex regex {}
+cp -r -f --remove-destination $( readlink file ) file
+find path -type d -exec du -s -k {} \; | sort -n -k number
+find . -exec sh -c echo {} | grep -qi /path/to/something[^/]*$ ; -print
+find path -type f -perm +permission | wc -l
+find path -regex regex
+find path -type f | awk -f regex program | sort -f | uniq -i -d
+find path -type f -not -path regex -exec cp {} file \;
+chown -r regex file
+cat file | xargs -i {} ln -s {} regex
+find path -name regex
+ps -e -f | grep regex | grep -v regex | awk program | xargs -i {} kill - regex {}
+find path -name regex | wc -l
+find path path
+find path -type f -name regex -exec cat {} \; | sed program | wc -l
+find path -iname regex -atime +timespan
+mv file
+od -t fd file
+grep -m quantity -a -o regex file | sed program | head -n quantity
+find path -type f -follow | xargs -i {} ls -a -l {} | awk program | sort -u
+find path -name regex -not \( -path regex -or -path regex \)
+find <path> -name .* -prune -o -type d -print
+find path -name regex -mtime +timespan -exec rm {} \;
+$( md5sum file | cut -f number -d regex )
+find path -path regex -prune -or -name regex -type f -print
+script=$( readlink -m $( type -p $0 ))
+gzip -d -c regex | grep -p regex | grep -v -p regex | split -d -l quantity file regex
+find path -perm -permission
+find path
+find path -nouser -print
+ping -c quantity regex | grep regex
+find path -type f -size size -print | xargs -i {} rm {}
+whoami
+find path -name regex -print0 | xargs -0 -i {} grep -i regex {}
+who | awk program | sort | head - quantity
+ping -a regex
+sort -n -r -k file
+find path -name regex -exec rename regex {} \;
+find path -nouser -ok rm {} \;
+which regex
+dig regex regex com.
+mkdir directory
+mv $( ls file ) file
+cat file | rev | cut -d regex -f -number | rev
+find path -name regex -exec grep -n -f file {} \;
+echo regex | tr -c -d regex
+find path -name regex | xargs -i {} grep regex {}
+tail -f file | tee -a file
+find path -name regex | grep -v regex
+find path -perm permission
+find path -name regex -exec du -k {} \; | awk program
+find path -user regex -print
+find path -type f \( -name regex -or -name regex \) -print0 | xargs -0 -i {} ls -t {} | tail - quantity | xargs -i {} rm {}
+find path -mtime +timespan
+find path -type d -perm permission -print -exec chmod permission {} \;
+sort file -o file
+brew reinstall git
+tail - quantity file | tee -a file
+find path -newermt regex
+find <directory> -type f -size -1m -print0 | xargs -0 rm
+shift
+ln -f file regex
+"seq -f ""%02g"" number"
+find path -name regex -type f | sort | xargs -i {} wc -l {}
+mv $( grep -l regex | awk -f regex program ) file
+find path path path -print | grep -f -f file
+read -n quantity
+chmod +permission file
+find path -name regex -mtime +timespan -print0 | xargs -0 -i {} grep regex {}
+find path -user regex -mtime timespan -iname regex
+awk program <( rev file )
+find path -size +size
+find path -size size -printf '%m %n %u %g %s %tb\n \b%td %tk:%tm %p\n'
+rsync -avzn --list-only --include company1/ --include company1/unique_folder1/*** --exclude * -e ssh user@server.com:/path/to/old/data/ /path/to/new/data
+ssh -p regex regex
+xhost +si:localuser:`whoami`
+find path -name regex -exec grep -n regex {} \;
+"paste <(mount | awk tolower($0) ~ /\/dev\/sd*/ {print nr ""\t"" $1 ""\t"" $3}) <(/usr/sbin/smartctl -a /dev/sdb | awk /device:/ {print $2})"
+"find / -print0 | perl -ln0e print ""found $_"" if -p"
+cat file | tr -d -c regex
+find . -name lemon*.mp3 -exec mplayer {} ;
+seq number number | sort -r | head -n quantity
+echo regex | tee >( wc )
+find path -name regex
+find path -name regex -exec rm {} +
+date --set regex
+screen -r
+"date -u -d regex +""%s"""
+seq -s+ -5 10 | bc
+dig regex regex ch txt
+find path -type f -not -iname regex -exec cp {} file \;
+find data/ -name filepattern-*2009* -print > filesofinterest.txt
+history
+find path -size +size -exec ls -l -s {} + | sort -n -r
+find path -type f \( -exec grep -q regex {} \; -or -print \)
+find path -fprint file -and \( -name regex -exec rm {} \; \)
+find path -iname regex
+find path -atime +timespan -ok rm {} \;
+cat $( whoami )
+find path -name regex -exec grep -i -n regex {} \;
+find path -maxdepth quantity -name regex -print path
+ls
+tac file | grep -m quantity -o -p regex
+screen -r user -x stuff spawn daemon$(printf \r)
+tmux set-environment -gu rbenv_version
+cut file -f number file
+sort -t regex -k number -k number file
+rm file
+tree --help 2>&1 | head -n2
+find path -maxdepth quantity -type f -exec chmod permission {} \;
+sed -z program
+echo regex | cut -d regex -f number
+cp -n file file
+find path -daystart -mtime timespan
+find path -type f | xargs -i {} chmod --reference {} permission
+find path -type f \( -name regex -or -name regex \) -print
+gzip
+find path -name regex -type f -print | xargs -i {} rm -f {}
+shopt -s dotglob
+find path -name regex
+readlink -f file
+join -t regex <( sort file ) <( sort file ) | join -t regex file <( sort file )
+find path -inum quantity -print
+find path -iname regex
+find path -iname regex
+watch command
+find path -name regex -newer file -print
+find path -mindepth quantity -name regex -prune -or \( -type d -print \)
+find path -not -path regex -type d -exec mkdir -p -- directory \;
+bind regex
+mv file file
+find path -name regex
+echo $( readlink -f file ) regex regex
+find path -samefile regex
+join file | awk program
+find path -name regex
+ifconfig regex | head -n quantity | tr -s regex | cut -d regex -f number
+history | awk program | awk program | sort | uniq -c | sort -n | tail | sort -n -r
+rev file
+mkdir -p directory directory
+grep -r -h regex file
+ls file | xargs -i {} gunzip {}
+awk program program | column -t
+finger | tail -n +quantity | awk program | sort | uniq
+./yourscript.ksh | sort | uniq
+ssh-keygen -l -f file
+more file | grep $( hostname ) | awk program
+mv file file
+find path -xdev -type f | cut -d regex -f number | sort | uniq -c | sort -n
+find path -size -size -xdev -print
+find path -size +size -exec ls -l {} \;
+mount -t ntfs
+echo regex | tee -a file
+"sync --list-only --include *2012*.xml -exclude *.xml serveripaddress::pt/dir/files/ --port=111 | awk { $1=$2=$3=$4=""""; print substr($0,5); } >output.txt"
+find path -cmin -quantity
+find path -type f -mtime +timespan
+find path -daystart -mtime -timespan
+script.py $(find /stuff/* -type d)
+find path -regex regex
+find path -newermt regex -and ! -newermt regex
+echo regex | xargs -n quantity -i {} cp file {}
+find -iname file* -exec du -cb {} + | grep total$ | cut -f1 | paste -sd+ - | bc
+find path -uid regex -print
+"find /path/to/dir -mindepth 1 -maxdepth 1 -type d -execdir sh -c d=${1##*/}; sudo tar -zcpvf ""$d"".tar.gz ""$d"" - {} ;"
+find path -user regex -exec chown regex {} \;
+find path -mtime -timespan
+find path -name regex -atime +timespan -print
+echo regex | grep -e -o regex
+sleep $(expr `date -d 03/21/2014 12:30 +%s` - `date +%s`)
+ping -c quantity regex | awk program
+echo regex | rev | cut -d regex -f -number
+ls !(b*)
+comm -1 -2 <( awk program program | sort -u ) <( awk program program | sort -u )
+find path -type f -exec ls -s {} \; path path | head - quantity
+find . -exec sh -c echo {} | grep -qi /projects/insanewebproject[^/]*$ ; -print
+cd directory
+find path -type d -exec chmod permission {} +
+find path path path
+cat file.json | python -c import sys, json, jsonpath; print '\n'.join(jsonpath.jsonpath(json.load(sys.stdin), 'store.book[?(@.price < 10)].title'))
+find path -regex regex
+mount -l -t nfs4
+find path -path regex
+"find path -type f -printf ""f %s %p\n"""
+find path -type f -mtime +timespan -name regex -exec mv {} file \;
+set -f
+find path -type f -exec file -i {} + | grep regex
+git -c color.status=always status | less -rex
+find ../d44203 -iname 2.jpg | while read fn; do name=$(basename $fn) ; dir=$(dirname $fn) ; mv $fn $dir/$(basename $(pwd))-$name ;done
+find path -size +size -print
+find path -type f -name regex -exec grep -i -l regex {} \;
+"find . ! -name . -prune -exec sh -c mv ""$@"" targetdirectory/ sh {} +"
+find path -type f -name regex
+grep --exclude-dir directory -r -n -w regex -e regex
+hostname
+find path -name regex | xargs -i {} rm {}
+find path -type f -print0 | xargs -0 -i {} md5sum {}
+find path -type d -exec touch file \;
+top -p $(pgrep --oldest programname)
+find path -mtime -timespan -name regex -print
+df file
+find path -name regex -exec gunzip {} \;
+find path -type f -empty -print0 | xargs -0 -i {} rm {}
+find path -name regex
+"find path -name regex -exec grep -h -f -f <( find path -name regex -printf ""%f\n"" ) {} \;"
+find path -links -quantity -print
+echo $(/usr/sbin/arp $(hostname) | awk -f[()] {print $2})
+find path -maxdepth quantity -mindepth quantity -type d
+find path -type f -mtime timespan -exec rm {} +
+find path -type f -regex regex -exec rm -r -f {} \;
+find path -name regex | xargs -i {} grep regex {}
+dirname $( readlink file )
+grep -v regex file | grep -v regex | more
+touch file
+rsync -a -v --ignore-existing file file
+find path -name regex -exec wc -l {} \;
+find path -maxdepth quantity -name regex -size -size -exec rm {} \;
+find path -type f -print0 | xargs -0 -n quantity -p quantity -i {} gzip -9 {}
+{ time sleep 1; } 2>&1 | grep real
+find path -mtime +timespan
+rsync -a -q -z file file
+comm -1 -2 <( grep -r -l regex file | sort ) <( grep -r -l regex file | sort )
+cut -d regex -f number
+find path -name regex | xargs -r -i {} ls -l -r -t {} | awk program
+watch -n quantity du -s file
+ls | grep regex | nl
+rsync file file file
+find path -name regex -exec grep -i -n regex {} + | grep regex | cut -d regex -f number | uniq
+find . -name *.c -o -name *.cpp -o -name *.h -o -name *.hpp > cscope.files
+find path -type f
+find path -path regex -print path
+mount regex -o remount,suid regex
+grep regex $( uname -r )
+find path -name regex
+find path -type f -iname regex -exec grep -s regex {} \;
+yum install mysql mysql-server
+find path -type f | grep -v -p regex
+find path -size +size -iname regex
+find path \( -name regex -or -name regex -or -name regex -or -name regex -or -name regex -or -name regex -or -name regex -or -name regex -or -name regex \) -print0 | xargs -0 -i {} sed -i program file file {}
+find path -size +size -iname regex
+find path | more
+git ls-files | xargs -d \n wc -l
+find path -depth -name regex
+date hostname echo regex | sed program | tr regex regex
+find path -ctime +timespan
+find path -mmin -quantity
+find . -maxdepth 1 -name *.jpg -print -exec convert
+find path -print | xargs -i {} grep regex {}
+find path -ipath regex -ipath regex
+find path -name regex -print
+screen -x main -x title blah
+find path -iname regex -type d -exec mv {} file \;
+readlink --canonicalize file
+seq -5 10 | xargs printf - - %s | xargs | bc
+"jobs -l | fgrep $! | perl -ne print ""$1\n"" if /\[(\d+)\]/"
+find /home -type d ! -exec test -e {}/bin ; -print
+find path -type d \( -name regex -or -name regex -or -name regex \) -prune -or -print
+find path -type f -iregex regex
+"find . -name *.jpg -exec sh -c mv ""$0"" ""$(basename $(dirname $0))-${0%.jpg}$.jpg"" {} ;"
+find path -name regex | xargs -i {} rm {}
+gzip -d -c regex | tar -x -f file -c directory
+echo regex | read regex
+ssh -t example.com screen -r
+chown regex file
+find path -size +size -ls
+find path -name regex -print -exec awk program {} \;
+df | grep regex
+find path -name regex -print0 | xargs -0 -i {} rm {}
+find . -type f -not -iwholename *.git* -print0 | xargs -0 perl -pi -e s/ +$//
+pstree -p
+find path -name regex -print0
+source file
+find path -type f -name regex | xargs -i {} tar -c -v -f file file {}
+chgrp regex file
+yes | command
+find path -name regex -ok rm {} \;
+ls -a -l -d $( which regex )
+find path -name regex
+mount --bind /original/path /new/path
+chown regex file -r
+find path -type f -name regex
+find path -ls | awk program
+"find path -maxdepth quantity ! -regex regex ! -regex regex path ! -regex regex -exec grep --color ""#define"" {} +"
+rsync -z -v -r --include regex --exclude regex file file
+mkdir -p directory directory
+read -n quantity regex
+"find <directory_name> -type d -exec sh -c cd {} && [ -d live ] && [ -d test ] && echo ""deleting test from {}"" && rm -rvi test  {} ;"
+find path -type f -perm -permission | awk -- program
+alias git-root=cd $(git rev-parse --show-cdup)
+comm -1 -2 <( sort file ) <( sort file )
+"find . -type f -execdir bash -c    dest=${1//[0-9]/}   [[ -f $dest ]] || cp -- ""$1"" ""$dest""  _ {} ;"
+find path -newermt regex
+find path -depth -name regex -exec rename regex {} +
+find path -type f -mtime -timespan -daystart -exec ls -l {} \;
+find path -nouser -or -nogroup
+hostname -i | awk -f regex program
+find path -name regex -exec rename regex {} \;
+find /path -iname *.txt | perl -lane $sum += -s $_; end {print $sum}
+cat file | xargs -i {} dig regex {}
+find path -type f ! -perm -permission -ls
+find path -exec grep -q regex {} \; -exec grep -q regex {} \; -ls
+find path \( -name regex -or -name regex -or -name regex \) -exec rm {} \;
+date -ujf%s $(($(date -jf%t 10:36:10 +%s) - $(date -jf%t 10:33:56 +%s))) +%t
+cp -a file file
+echo <( true )
+find -l path -maxdepth quantity -type l
+split -l quantity file regex
+du -h --max-depth quantity file | sort -h -r
+find -l /target -type l | while read -r file; do echo $file is orphaned; done
+find path -name regex -exec rm -r -f {} +
+split -l quantity file
+find path -mindepth quantity -maxdepth quantity -name regex
+find path -depth -type f -not -name regex -and -not -name regex -and -not -name regex -exec rm {} +
+find .. -type d -print0 | xargs -0 tar cf dirstructure.tar --no-recursion
+timeformat=%r && time ls -l
+set | sed -n program
+cat file
+sleep timespan
+find path -type d -name regex
+find . -iname *.jpg -type f -printf %b\t%d:%i\n | sort -u | cut -f1 | paste -sd+ - | bc
+find path -print | grep regex
+rsync --recursive --prune-empty-dirs --include regex --filter program file file
+find path \( -iname regex -or -iname regex -or -iname regex \) -ls | awk program
+head -c quantity file
+find path -type d
+ssh -l regex -p regex regex
+kill - regex $( jobs -p )
+find path -type d -mtime +timespan -exec compress file {} \;
+find path -path regex -prune -or -print
+"find path $( pwd ) -name regex -printf ""%f\n"""
+find path -user regex
+sed -n program
+gunzip -c regex | tar -x -v -f file
+cal datetime datetime | awk program
+find /target/path -type f -print0 | xargs -0 your_command_here
+find -d path -name regex -type d -exec rm -r -f {} \;
+mkdir directory
+find path -iwholename regex
+find path -type f -exec md5sum {} +
+od -t x2 -n file file | cut -c number | grep -e -m quantity -q regex
+find path -type f -print0 | xargs -0 -i {} grep -l -e regex {}
+readlink -f $( which regex ) | sed program
+find path -type d -maxdepth quantity -mindepth quantity -exec basename {} \;
+find path | grep -e -z regex | xargs -0 -i {} echo {}
+find path -name regex -print
+$( echo regex | tr regex regex )
+find path -mmin -quantity
+find path -name regex
+pushd
+find path -type f -not -name regex
+chgrp -r regex file
+read -r regex
+find path -name regex -print0 | xargs -0 -i {} rm {}
+ifconfig regex | awk program
+split -a quantity -d -l quantity file regex
+find path -iname regex -exec mv {} file \;
+find path -perm permission -type f -exec ls -l {} \;
+find path -regextype posix-egrep -regex regex
+kill -9 `pgrep -f cps_build`
+head -16482 in.sql | tail -258 > out.sql
+find path -type f -name regex | xargs -i {} sed -i program {}
+find path -name regex -print0 | xargs -0 -i {} cat {} | wc -l
+find path -type d -name regex -ok cp file {} \;
+find path -exec rm {} \;
+find path -name regex
+find path -size +size -size -size
+cp -a file file file
+find path -type f -print0 | xargs -0 -i {} chmod permission {}
+ls -t -p | grep -v regex | tail -n +quantity | tr regex regex | xargs -0 -i {} rm -- {}
+find path -type f | grep -p regex | xargs -i {} rm {}
+find -x data -name filepattern-*2009* -print0 | tar --null --no-recursion -uf 2009.tar --files-from -
+find path -name regex | xargs -i {} grep -e regex {}
+find path -type f -name regex | awk -f regex program
+find path -type f -regex regex
+find path -name regex
+sort -k number -k number -t regex --stable --unique file
+unset array[`shuf -i 0-3 -n1`]
+find path -type f -name regex -or -name regex -or -name regex
+find path -type d -exec chmod permission {} \;
+find path -maxdepth quantity -iname regex
+find path -mmin quantity -type f
+awk program program program
+uname -s -r -v
+find path -name regex | xargs -i {} wc -l {}
+rpm2cpio php-5.1.4-1.esp1.x86_64.rpm | cpio -idmv
+find path -maxdepth quantity -name regex -print0 | xargs -0 -i {} rm {}
+chown -r regex file
+find path -type d -name regex -delete
+find path -ctime -timespan
+read -p regex -n quantity
+find path -name regex
+"find . -exec printf %s\t {} ; -exec uuidgen ; | awk -f \t { sub(/.+\//,"""", $1); print $2, $1 } | sort -k2"
+find path -user regex -perm -permission
+find path -type f | xargs -i {} head -v -n quantity {} | grep -b quantity -a quantity -e regex
+find path -name regex
+find . -maxdepth 1 -name *.sql -exec sed -e 's/ , );/1,1);/g' '{}' | /usr/bin/mysql -d ootp ;
+find path -name regex -type f -mmin +quantity -delete
+sort -u -o file file
+cal datetime datetime | tee file | more
+find path -atime -timespan -amin +quantity
+find / -type f -name your_pattern 2>/dev/null
+find path -uid regex -uid regex -type f
+find path -name regex -prune -or -type f -and -perm permission -print | sed program | sort | uniq | tr -d regex | sed program
+echo regex | od -x -c -b
+/usr/bin/time -f%e ls >/dev/null
+find path \( -name regex -and -type d \)
+find path -type f -exec chmod permission {} +
+find path -cmin -quantity | head
+find path -maxdepth quantity -type d | xargs -i {} mkdir directory
+mkdir directory
+find path -type f -name regex -exec tail -n +quantity -q file {} + | tee file
+find path -name regex
+find path -type f -print | sed -e program | grep regex | wc -l
+find path -type d -exec chmod +permission {} \;
+find path -type d | paste -d regex -s
+tree
+find path -mtime -timespan
+"find path/ -name *.log -print0 | xargs -r0 -i {} bash -c grep -q ""string that should not occur"" ""{}"" || echo ""{}"""
+find -l path -name regex -print0 | xargs -0 -r -i {} rm {}
+find path -type f | sort
+echo $( cal datetime datetime )
+find . -name *.txt -print0 | xargs -0 process
+echo regex | awk program program program program | od -t x1c
+fold -b16 | sed s/../& /g
+find path -name regex -exec rm {} \;
+watch wc -l <filename>
+find path -name regex | xargs -i {} rm -r -f {}
+echo $( date ) regex
+chown regex file
+find . -maxdepth 1 -type d -print0 | (cd /somewhere/else; xargs -0 mkdir)
+ssh someone@somehost cd /export/home/someone && find . -name '*' -print| xargs -n1 curl -u someone:password ftp://somehost/tmp/ -vt
+find path -type f -not -name regex | xargs -i {} rm {}
+find path -type f -printf %p\\n | sort | comm -3 file file | xargs -i {} rm {}
+yes 1 | command
+sed --in-place regex program
+yes regex | head -n quantity | tr -d regex
+alias 12np=ssh mydomain\\stephencheng@userxyz@host.com
+find path -type f -iname regex -exec chmod permission {} \;
+find path -perm permission
+find path -type f -name regex -exec sed --in-place regex {} +
+for f in `find -name *.jsp` ; do echo ==> $f >> out.txt ; grep todo $f >> out.txt ; done
+"find <directory_name> -type d -exec sh -c cd {} && [ -d live ] && [ -d test ] && cd ../ && echo ""deleting {}"" && rm -rvi {}  {} ;"
+mkdir -p directory
+find path path -name regex
+find path -iname regex -type f -print | xargs -i {} rm -f {}
+find /user/directory/ -name *txt -mtime 0 -type f -exec printf %s:  {} ; -exec tail -1 {} ;
+find path $( pwd ) -name regex | xargs -l quantity -i {} dirname {}
+find path -type f -iname regex -print
+find path -perm -permission -perm permission ! -perm permission
+shopt -s nocaseglob
+"find /path/to/dir -type l -exec sh -c cp --remove-destination ""$(readlink ""{}"")"" ""{}"" ;"
+ping regex -c quantity | grep -e -o regex | grep -e -o regex
+$( hostname )
+"find path -printf ""%f\n"""
+"find . -name *.jpg -execdir bash -c d=""${pwd##*/}""; [[ ""$1"" != ""$d-""* ]] && mv ""$1"" ""./$d-$1"" - {} ;"
+find path -perm permission
+bind regex
+find path -type f -exec chmod permission {} \;
+find path -name regex -prune -or -name regex -print
+join -t regex file file
+cd $(node app)
+echo -e $( echo -n -e regex | wc -m )
+echo -n teststring | gzip -1 | pigz -lv
+scp -c blowfish -r file file
+shopt -s checkwinsize
+history quantity | grep regex | grep regex
+find path -name regex -ctime +timespan -exec rm -f {} \;
+find path -mtime -timespan -type d
+ls -a -l -f -t $( find path -name regex ) | rev | cut -d regex -f number | rev | head - quantity
+find . -perm +220 -exec ls -l {} ; 2> /dev/null
+echo regex | rev | cut -c number | rev
+find $(pwd)/* -type f -exec stat -c f%15s %n {} +
+shopt -s progcomp
+find path -name regex -exec grep -l regex {} \; | wc -l
+dirname $( readlink file )
+find path -type f -execdir sort -o file {} \;
+sudo chown -r $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+cp -n
+echo regex regex regex regex | tr regex regex | tac | tr regex regex
+diff -n -a -u quantity file file
+"seq 1 10 | perl -e @x=("""")x3;while(<>){print shift @x;push @x,$_}"
+find path | xargs -i {} sed -i program {}
+cat file | sed -e program
+find . -name sqlite.db | xargs your_script.sh
+find path -type f -print0 | xargs -0 -i {} chmod permission {}
+rsync -r -v -z -e ssh -p regex --progress file file
+ls -l file
+find path -type f -not -newermt regex
+find path -type f -print0 | xargs -0 -i {} find path -type f -exec diff -q -s --from-file file {} +
+cat file file file file | split -n quantity -d file regex
+find path -type f -perm permission
+chown -r $( whoami ) file
+find path -name regex | xargs -i {} gzip -l {} | tail -n +quantity | head -n -quantity | sort -k number | tail -n quantity | awk program
+find path -name regex
+find path -type -f path path -print0 | xargs -0 -i {} ls -1 -h -s -s {}
+split --numeric-suffixes=1 --additional-suffix=.csv -l100 data.csv data_
+find path -not -regex regex
+find path -size -size -print
+echo | ssh-keygen -p regex
+read -r regex
+find path -iname regex -exec ls {} +
+find path -exec basename {} \;
+ls file | wc -l
+find /path/to/inputfiles -name *.txt -exec /path/to/myprogram.sh {} ; > out.txt
+tree --help
+find path -iname regex -type f -exec cp {} -r -v file \;
+find path -type f -mtime -timespan -exec cp {} file \;
+find path -name regex
+find path -name regex
+find path -type f -name regex ! -name regex
+which regex | file -f file
+cp -r -p file file
+find path -name regex
+rsync -a -v file file
+find path -exec grep -i regex {} \;
+find path -mtime +timespan -print
+echo regex | tee -a file
+find path -maxdepth quantity -name regex -maxdepth quantity | xargs -n quantity -i {} rm {}
+date -d regex +%s
+find path -name regex -print0 | xargs -0 -i {} rename regex {}
+find path -name regex -exec rm -f {} \;
+find . -type d |xargs tar rf /somewhereelse/whatever-dirsonly.tar --no-recursion
+lang=en_us cal
+find path -name regex -prune -or -name regex -prune -or -type f -print | xargs -i {} grep -e -i -l regex {}
+find path -size size -printf '%m %n %u %g %s %tb %td %tk:%tm %p\n'
+ssh -f regex -p regex -l regex -n
+sed program file | split -c size file
+find path -type f -wholename regex -print0
+find path path path path
+cat <( grep -f -i -v regex <( crontab -l ) ) <( echo regex ) | crontab file
+"find path -name regex -printf ""mv '%h/%f' '%h/lib%f'\n"" | bash"
+find path -type f -exec grep -i regex {} \; -print
+"watch -n 300 -t /usr/bin/fbi -noverbose -a -t 4 -u `find -type f | egrep -i ""(jpg|bmp|png|gif)$""`"
+find path -mindepth quantity -maxdepth quantity -type d -name regex -printf '*' | wc -c
+any_command_what_produces_relative_path_names | cpio -pamvd /new/parent/dir
+paste -s -d+ infile | bc
+apropos regex regex regex | grep regex
+dir=$( cd $( dirname ${bash_source[0]} ) && pwd )
+find path -exec echo {} \;
+find path -type f -exec ls -s {} + | sort -n -r | head - quantity
+find path -name regex -exec ls -l {} \;
+find path -mtime timespan -print
+find path -name regex -exec grep regex {} file \;
+{ time ls; } 2>&1 | cat > time.txt
+find path -size +size
+dig regex
+chown -r regex file
+find path \( -perm -permission -fprintf file '%#m %u %p\n' \) -and path \( -size +size -fprintf file '%-10s %p\n' \)
+find path -maxdepth quantity -type d -print0
+export ps1=$(whoami)@$(hostname):
+basename $( pwd )
+fold -w quantity file | sed -e program -e program
+sort file file | uniq -u
+find path -inum quantity -print
+ls -c -1 -t | awk program | xargs -i {} rm {}
+shopt nullglob
+sort --random-sort file | head -n quantity
+find -type f -exec printf \n ; | wc -l
+rm $( find path -name regex ) -r -f
+find ./ -type d -exec rmdir --ignore-fail-on-non-empty {} 2>/dev/null ;
+dirname $( pwd -p )
+mount --bind /tmp/fakerandom /dev/random
+find path -name regex -exec grep -l -r regex {} \; | xargs -i {} grep -l regex {}
+date -d regex
+find path -type f -size -size
+find . -mindepth 1 -maxdepth 1 -type d -print -exec git -c {} pull ;
+read regex
+find path -mindepth quantity -print0 | xargs -0 -i {} mv --target-directory directory {}
+command 2>&1 | tee /path/to/logfile
+find path \( ! -regex regex \) -type f -name regex
+tree -i -f | grep regex | xargs -n quantity -i {} grep -h regex {}
+echo -n -e regex | sort -v -r | head -n quantity
+for f in `find -name *company*` ; do mv $f `echo $f | sed s/company/nemcompany/` ; done
+find path -user regex -iname regex | head
+find path -name regex
+find {} -name regex -type f -or -type l -maxdepth quantity -perm +permission
+cat file | grep -c regex
+find . -name *.txt | parallel -j1 --tty vim
+echo regex | awk program
+find path -name regex
+find path -mindepth quantity
+find path -name regex -exec rm -r {} \;
+find path -iname regex | xargs -i {} grep -i regex {}
+find . -name *.txt -exec process {} ;
+find path -type d
+hostname -i
+tac file | sort -u -t regex -r -k number | tac
+grep -r -i -l regex file
+ln -s -n file regex
+cd directory
+"find . -lname `pwd`* -exec sh -c ln -snvf `python -c ""from os.path import *; print relpath(\""$(readlink {})\"",dirname(\""{}\""))""` {} ;"
+find path -type f -exec ls -1 {} \;
+find path -mtime +timespan
+find path -type f \( -iname regex -or -iname regex \) ! -path regex
+find path -name regex -and -name regex -and -not -name regex
+find path -exec file {} \; | grep regex | cut -d regex -f number
+find . -type l -! -exec test -e {} ; -print
+find path -type f
+find path \( -size +size -and -size -size \)
+grep regex $( find path -name regex )
+yes | cp file file
+screen -x main -p oldwindow -x title blah
+mktemp -d --tmpdir directory -t regex
+find path -name regex -type d -prune -exec rm -r -f {} +
+unzip -l some-jars-and-textfiles.zip | tr [:blank:] \t | cut -f 5 | grep jar
+find path -name regex | xargs -i {} tar -c -z -v -f file {}
+find cam2/2013* -name *.jpg -print0 | xargs -0 cat | ffmpeg -f image2pipe -framerate 30 -vcodec mjpeg -i - -vcodec libx264 -profile:v baseline -level 3.0 -movflags +faststart -crf 19 -pix_fmt yuv420p -r 30 cam2-2013-30fps-19crf.mp4
+find path -name regex | sed -e program | sort | uniq
+find path -regex regex
+find path -type d -exec chmod permission {} \;
+nl
+yum --enablerepo=remi upgrade php-mbstring
+read regex regex regex regex regex regex regex regex regex regex regex
+find path -regex regex ! -regex regex -type d -links quantity
+cat file | paste -s -d file
+find path -type f -print | xargs -i {} ls -l {}
+find path -name regex -exec chgrp -v regex {} \; -exec chmod -v permission {} \;
+find path -type d -exec chmod permission {} +
+cp --remove-destination $( readlink file ) file
+find path -type f -size +size
+echo ee | tee /dev/pty/2 | foo
+"find pdfs/ -name *.pdf -exec sh -c pdftotext ""{}"" - | grep -l -z -i --label=""{}"" ""perry sound"" | xargs -0 -i{} grep -i -l --label=""{}"" ""october 26, 2004"" ""{}"" ;"
+find path -type f -name regex ! -path regex ! -path regex ! -path regex
+"find . -type f -printf %p %s\n | perl -ane $sum+=$f[1];end{print ""$sum\n""}"
+find path -type d -iname regex -ls
+ln -s -f file regex
+zcat number.txt.gz | { zcat xxx.txt.gz | comm -12 /dev/fd/3 - ; } 3<&0
+find . -type f -exec sh -c echo first; false ; -exec echo second ;
+find path -type d -mindepth quantity -print -exec chmod permission file \;
+find path -iname regex | grep regex
+find path -type f -not -name regex -mtime +timespan -exec ls {} \;
+find path -mmin +quantity
+sed -i program file
+find path -mindepth quantity | xargs -i {} chmod permission {}
+find path -type f -name regex
+find path -name regex -exec sed -i program {} +
+history quantity | tac | nl | tac | sed program
+find path -type f -name regex -not -name regex
+find path -name regex -exec dirname {} \;
+find path path path -name regex
+find path -type d -name regex
+find . -type d -name *log* | xargs -i {} sh -c echo {};ls -la {} | tail -2
+mv file
+find path path -type f
+find path -name regex -ls
+find path \( -path regex -prune -or ! -name regex \) -and -name regex
+find path -name regex
+df -h file
+find path -amin quantity
+find path -user regex
+finger $user_name | grep directory | expand | cut -d   -f 2
+yes | head -n quantity | grep -n regex | cut -d regex -f number | paste -s -d regex
+find path -type f \( -iname regex -or -iname regex \)
+ps -p $$ | awk $1 == pp {print $4} pp=$$
+find path -type f -exec ls -s {} \; | sort -n -r | head - quantity
+find path -daystart -mtime -timespan -and -mtime +timespan
+"find /home -type f -name *.ext -print0 | while read -r -d $(printf 000) -r path; do awk { sub(""\r$"", """"); print } $path > $path_new; done"
+grep regex file | nl
+find path -name regex | tr regex regex | xargs -0 -i {} wc {}
+find path -name regex -exec grep -p regex {} \; -print
+find path -regex regex
+alias go=ssh $(pbpaste) -l pete
+find path -name regex | xargs -i {} wc -l {} | sort -n -r | grep -e -v regex | less
+find path -mtime +timespan -print
+find path -size size -ls
+tar cfvz --exclude=<dir1> --exclude=<dir2> target.tgz target_dir
+find path -iname regex
+find path -name regex | sort | xargs -i {} head -n quantity {}
+find path -type f
+$( dirname $( readlink -e file ) )
+cat file | paste -d regex file file
+alias rm100m=find / -type f -name *.tar -size +100m -exec rm -i {} \;
+echo -e regex | awk -v program program | od -a
+split --lines quantity file
+find path -type d -print0 | xargs -0 -i {} chmod permission {}
+ps axu | grep jbos[s] | tr -s   | cut -d  -f5
+find path -name regex ! -name regex ! -name regex ! -name regex ! -name regex ! -name regex -exec gunzip -v -f {} \;
+find path -mmin -quantity -not -name regex
+netstat -rn | gawk /ug/ {print $nf} | xargs ifconfig | gawk match($0,/inet addr:(.*) b/,a) {print a[1]}
+which regex | xargs -i {} ls -l {}
+find path -type d -print | sed program | xargs -i {} mkdir -p {}
+find path -type f -perm +permission -print
+echo regex | cut -d regex -f number
+find path -size +size
+find path -name regex
+mount --bind /absolute/path/to/some/where/else project1/link1
+"find path -printf ""././%f\n"" | cpio -o -f regex"
+find path -iname regex | xargs -i {} sed -i program {}
+zcat regex | grep regex
+comm -2 -3 <( find path | sed program | sort ) <( find path | sed program | sort ) | sed program
+find path -type f -group regex
+find path -maxdepth quantity -mmin +quantity -type f -name regex -delete
+cat -n file | less
+find path -type l
+touch -d $( date -r file ) file
+tmux -v | cut -c number
+find path path \( -path regex -or -path regex \) -prune -or -print
+mv file $( echo regex | tr regex regex )
+mount --bind /usr/bin /path/to/chroot/jail/usr/bin
+cat file | xargs -i {} du -c {} | tail - quantity
+find path -perm permission
+alias foo=bar=baz
+find path -type d -exec chmod permission {} \;
+find path -type d -exec chmod permission {} \;
+"find path -type f -printf ""%t@ :$f %p\n"" | sort -n -r | cut -d regex -f number | head -n quantity"
+unset $(/usr/bin/env | /usr/bin/cut -d = -f 1 | /usr/bin/xargs)
+find path -type b -name regex -print
+tail -n 100 file1 | bar | wc -l
+find path -name regex -print0 | xargs -0 -i {} grep -e regex {}
+pstree -a -p regex
+find path -type f -name regex
+find path -name regex -exec file {} \; | grep -o -p regex
+printf %-10s%-10s%-10s%s\n $(yes x | head -n 10)
+find path -type f -name regex -print0 | xargs -0 -i {} sed -i regex program {}
+kill $(ps -o pid= -s $(ps -o sess --no-heading --pid 21709))
+find path -maxdepth quantity -ctime +timespan -name regex
+rsync -r -a -v -e file file file
+find path -name regex -exec ln -s {} \;
+"ssh askapache nice -n 19 sh -c ""( ( nohup chown -r ask:ask /www/askapache.com &>/dev/null ) & )"""
+find path -name regex -and -not -name regex -ctime +timespan -exec bzip2 -z -v {} \;
+find path -type d -exec find {} -maxdepth quantity ! -type d -iname regex \;
+find path -perm -permission -print
+find /home/luser -type f -name ‘*.mpg’ | parallel rm -f
+find path $( pwd ) -name regex -exec grep regex {} \;
+find path -type f -iname regex | wc -l
+ssh -t example.com screen -r -x ls
+tmux new-session -s vims -n vim0 -d vim foo
+find path -name regex -print0 | xargs -0 -i {} tar -r -f file {}
+find path -newer file
+find path -type f ! -name regex ! -name regex -print | tee -a file
+yes | rm -r -i file
+"find /path -name pattern -exec bash -c for file; do somebashstatement ""$file""; done -- {} +"
+find path -mtime -timespan -type f -print
+chmod permission $( find path -type f )
+cpio -i regex regex | md5sum
+find path -iname regex -exec grep regex {} \; -print
+echo $( yes regex | head -n quantity )
+find path -type l -print
+rsync -r --verbose --exclude regex file file
+alias h=history
+find path -name regex -type f -daystart -mtime -timespan -mtime +timespan | xargs -i {} cat {} | sort | uniq
+find / -name *.conf 2>>/dev/null
+mkdir directory
+ls -t | head -n quantity
+cd ${curr_dir} && find .
+find path -type f -name regex -newer file -print
+readlink -f file
+cp $( ls -1 -t -r file | tail - quantity ) file
+nl | sort -r | cut -f number | head - quantity
+find path -name regex
+find path -type f -exec grep regex {} \; -print | wc -l
+echo regex | uniq -c
+find path -type f -exec grep -n -i regex file {} \;
+find /home/family/music -name *.m4a -exec ffmpeg -i {} -acodec libvorbis -aq 6 -vn -ac 2 {}.ogg ;
+find path/to/folder -type f -print0 | sort -z | xargs -0 sha1sum | sha1sum
+ssh -y regex
+nl -b a file
+scp -b -p -q -r file file
+set $( cal datetime datetime )
+"mount | grep -i /dev/sd.* | awk { print nr ""\t"" $1 ""\t"" $3 } > mount_output &"
+zcat regex | grep -o regex | sort | uniq -c | sort -n
+find path -mmin -quantity
+hostname -s
+yum remove subversion
+yes uuuuuuuuuuuuuuuuu | tr -d \n > /dev/to/overwrite
+find path -type f -perm -permission -print0
+find path -wholename regex
+find path -type f -exec chmod permission {} \;
+find path -mtime +timespan -print | xargs -i {} rm {}
+od -c -v -a none -w size | sort -b -u
+find path -mindepth quantity -type d
+find path -mtime timespan -exec rm -r -f {} \;
+find path -name regex
+ifconfig regex | grep regex | grep -v regex
+find path -name regex -print0 | xargs -0 -i {} mv -t directory {} {}
+find -ds . -mindepth 1 -type f -print0; printf \0;
+nl -b a | sed program | grep regex | awk program
+find path path -f -atime -timespan
+find path -name regex -exec rm {} \;
+"$( date ""+%s:%n"" )"
+grep --include regex -r -n -w regex -e regex
+find path -type f | xargs -i {} grep -l regex {}
+find path -print0 | xargs -0 -i {} echo {}
+top
+find . -type f | perl -ne print $1 if m/\.([^.\/]+)$/ | sort -u;
+find path -perm permission -iname regex
+grep -r -l regex file
+"find . -type f -name *.java -exec sh -c iconv -f cp1252 -t utf-8 ""$1"" > converted && mv converted ""$1"" -- {} ;"
+find path -print0 -iname regex | tar -c -v -f file -t file
+find path -user regex -iname regex
+find path -name regex -exec rename -v regex {} +
+ls *.html | xargs -i {} sh -c mv $1 `basename $1 .html`.txt - {}
+find path \( -name regex -or -name regex \) -type f -atime +timespan -exec rm {} \;
+whoami
+curl http://www.example.com --proxy http://125.119.175.48:8909
+find path -user regex -print | xargs -i {} chown regex {}
+ps -eo pcpu,pid,user,args | sort -r -k1 | less
+finger -l | grep regex | tr -s regex | cut -d regex -f number | sort | uniq
+diff -q <( sort file | uniq ) <( sort file | uniq )
+find path -mtime -timespan -daystart -print0 | cpio -p -d -0 regex
+find path -type f -name regex
+false
+find path -maxdepth quantity -name regex -maxdepth quantity | xargs -n quantity -i {} rm {}
+find -l path -type l -delete
+basedir=$(cygpath -am $(dirname $0))
+kill -9 $(lsof -i:3000 -t)
+find path -name regex -print
+chown -r regex file
+find path -size +size -iname regex
+find path -maxdepth quantity -name regex -prune -or -exec rm -r -f {} \;
+find path -iname regex -type f -exec mv {} file \;
+find path -name regex -ok rm {} \;
+find path -exec ls -l {} \;
+find $(pwd) -name yourprogram -exec dirname {} ; | while read d; do cd $d && pwd; done
+find path path -lname regex
+find path -iname regex -type f -print0 | xargs -0 -i {} mv {} file
+find path -type f -not -empty | wc -l
+find path -user regex -name regex
+"find . -type f |xargs ls -la| awk {print ""chmod ""$1"" ""$nf}>./filespermissions.sh"
+find path -type f -name regex
+find path -name regex -newer file
+find <path> -type f -exec sh -c for f; do echo process $f;  done sh {} +
+shopt -p globstar
+find path -newer file -not -newer file -type d -print0 | xargs -0 -i {} rmdir {}
+find . -type f -exec perl -pi -e s|xxx|yyy|g {} ;
+top -b -p `pidof a.out`
+find path \( -name regex -or -name regex \)
+find path -type f -wholename regex -exec grep -h regex {} \;
+uname -o
+sudo kill -15 $( sudo lsof -i:6000 -t )
+su - jetty -c sh runprogram.sh
+find path -maxdepth quantity -type f | sed program
+find . -exec command {} ;
+find | xargs
+du -k -s -h file | sort -n -r
+find $dirname -type f > $tempfile
+find plsql -type f -perm -220 -exec ls -l {} ; 2>/dev/null
+find path -mtime -timespan
+yes this is the text i want to add to a file|head -200>myfile.txt
+find path -name regex -type f
+tar -t -f file | xargs -i {} dirname {} | sort | uniq
+find path -name regex -exec grep -i -q regex {} \; -exec grep -i -q regex {} \; -print
+head -c quantity file
+echo $( ls -l $( which regex ) )
+find / -name expect 2>/dev/null
+find path -type d -exec ls -d -l -r -t {} \;
+ssh regex
+find path -name regex -exec wc -l {} \;
+find path -perm -permission
+find path -name regex -print
+find path -type d \( ! -name regex \) -or \( ! -name regex \) -print
+find path -name regex -exec grep -n regex {} file \;
+find path -name regex -mtime +timespan -print
+cat --help
+read -n quantity regex
+ping -c quantity regex | sed program
+top -p regex -p regex -p regex
+head -c1024 /dev/urandom | xxd -p | tr -d $\n
+find . -name custlist* | perl -ne $path = $_; s?.*/??; $name = $_; $map{$name} = $path; ++$c; end { print $map{(sort(keys(%map)))[$c-1]} }
+find path -type f -name regex -exec ls -l {} \;
+find path -type d -print0 | xargs -i {} chmod permission {}
+find path -type d -name regex | tr regex regex | sed program
+set -o history -o histexpand
+ssh user@server display=:0 nohup xeyes < /dev/null > std.out 2> std.err &
+who | sed -e program
+find path -type f ! -iname regex -delete
+find path -size +size \( -mtime +timespan -or -atime +timespan \) -ls
+"alias lvim=vim -c ""normal '0"""
+find path \( ! -regex regex \) -type f -print0 | xargs -0 -i {} sed -i program {}
+find path
+find path -exec echo regex {} \;
+find path -name regex -or -size +size
+od -t x1 --skip-bytes size --read-bytes size file | head - quantity | awk program
+"find path -name regex -printf ""%m %f \t %s bytes \t%y\n"""
+find path -type f -exec bzip2 {} \;
+join -1 regex -2 regex -t regex file file
+find . -perm -20 -exec chmod g-w {} ; or find . -perm -20 -print | xargs chmod g-w
+read -e -p regex regex
+find path -type d -exec chmod permission {} \;
+find / -type f -atime -10 > march.files
+"date +""%y/%m/%d (%h:%m)"" history quantity | cut -c number"
+wc -l $(git ls-files | grep .*\.cs)
+find path -type f -exec cat {} \; | tr -c regex regex | grep regex
+sort -u -t regex -k number file
+tail -n quantity file
+cat | od -b
+cp --help
+find path -name regex -print
+cat submission.cpp | astyle -bj | cpp - | md5sum
+which regex
+find path -perm permission
+zcat regex | awk program | head
+find path
+find path -name regex -print
+find path | xargs -i {} basename {}
+chown regex file
+find path -lname regex
+find path -name regex
+"find path -iname regex -printf ""%p\n "" | xargs -i {} -n quantity cp {} file"
+find path -exec grep regex {} \; | more
+ssh -o userknownhostsfile=/dev/null -o stricthostkeychecking=no -o loglevel=quiet -i identity_file machine.example.org gcc -dumpversion
+tar xvf $myarchive && cd ${myarchive%.tar.gz}
+which regex
+find path -name regex -exec grep -l regex {} + | wc -l
+find path -name regex -exec grep regex {} +
+find path -not -name regex -not -name regex -not -type d
+find path -name regex
+find path $( pwd ) -type f -exec ls -l {} \; | wc -l
+find path -type f -print | xargs -i -i {} mv -f {} file {}
+find path -printf . | wc -c
+read -sk
+find /var -maxdepth 2 -type d -exec stat -c %n %y {} ;
+less -n file
+find path -type f -name regex \( -exec grep -q regex {} \; -or -print \)
+find path | sort
+find path -print | xargs -i {} grep -l -i regex {}
+sed program file | sed -n -f program file
+find path -mindepth quantity -type d | xargs -i {} chmod permission {}
+find /starting/path -name target.out | xargs /path/to/simplegrepscript.sh
+find path -name regex -exec grep -i -r regex {} \;
+find path -name regex -print0 | xargs -0 -i -i {} mv {} file {}
+find path -iname regex
+find path $( pwd ) -name regex -type f
+pstree -p regex | sed program | grep regex | sed program
+paste -d regex file file | paste -d regex file file | sed program
+find . -type f | xargs stat --format=%s | awk {s+=$1} end {print s}
+paste --delimiter=\n --serial *.txt
+find path -exec sed -i program {} \;
+find path | xargs -i {} tar -c -v -f file {}
+find path -depth -print | cpio -p -v -d regex
+find path -type d -name regex -prune
+grep -o regex <( comm file file )
+find path -type f -mtime timespan -exec rm -f {} \;
+"find . -name *.txt | parallel ext=""{/}"" ; mv -- {} foo/{/.}.bar.${ext##*.}"
+set -x
+find path -regextype posix-egrep -regex regex -print0 | xargs -0 -n quantity -i {} ls {}
+find path -name regex
+find path -type f path
+find path -name regex -exec rename regex {} \;
+find path -type d -perm permission -print -exec chmod permission {} \;
+echo regex | tr regex regex | grep -v regex | tr regex regex
+find path -name regex
+pwd dirname regex
+hostname -i | cut -d regex -f number
+pstree -p regex
+diff file file -r -x file
+find path -name regex -type d | sort | uniq
+find path -not -path regex -iname regex
+ps -o pid= --ppid $ppid | xargs kill -9
+chmod permission file
+chmod +permission file
+ifconfig regex | grep -o -e regex
+$( mktemp )
+nl -n ln file | sed program
+fold -w1 file | pr -4t | tr -d \n\t\-  | sed $a\
+find path -type f -maxdepth quantity -not -empty -print0 | xargs -0 -i -i {} cp file {} {}
+command | tee /path/to/logfile
+gzip regex
+find path -path regex -prune -or -path regex -prune -or -path regex -prune -or -path regex -prune -or -print | grep -e regex | grep -v regex | xargs -i {} cat {} | sed program | wc -l
+find path -type f
+"find -printf %p\0 -exec uuid -v 4 ; | sort | awk -f\0 { print $2 "" "" $1}"
+find path -name regex -type f -exec chmod permission {} \;
+sort file | uniq -c
+find path path -f -mtime -timespan
+find . -type f -name *cache.html -exec sh -c gzip < {} > {}.gz ;
+awk program program | column -t
+"find path -mindepth quantity -maxdepth quantity -type d -printf ""%p\n"""
+find path -size +size -mtime +timespan -exec ls -l {} \;
+find path -mtime -timespan | xargs -0 -i {} cp file {}
+chown -r regex file
+find path -type f -exec echo regex regex {} \;
+ls -a -l file
+find path -uid regex
+find path -maxdepth quantity -name regex -print0 | xargs -0 -i {} rm {}
+find path -name regex -type f
+find $(pwd -p) -type d ( -path /path/to/dir1 -or -path /path/to/dir2 ) -prune -or -not ( -path /path/to/file1 -or -path /path/to/file2 ) -print0 | gnutar --null --no-recursion -czf archive.tar.gz --files-from -
+shopt -s execfail
+rename regex regex
+tmux set-option -g renumber-windows on
+find . -maxdepth 1 -type d -print0 | xargs -0 -i {} sh -c echo $(find {} | wc -l) \\t {} | sort -rn | less
+find path -name regex ! -wholename regex -print
+find path -type d -exec chmod permission {} \;
+find | xargs ipython nbconvert
+source $( dirname regex )
+find path -type f \( -name regex -or -name regex -or -name regex \) -exec ls {} \;
+mkdir directory
+find path -name regex -exec ls -l -d {} \;
+touch filename_`/bin/date +%y%m%d%h%m%s`.txt
+find path -type d -perm permission -print -exec chmod permission {} \;
+find path -name regex -exec chmod permission {} \;
+find path -mmin quantity
+find path -name regex -type f -print0 | xargs -0 -i {} grep -i regex {}
+find path -name regex -mtime timespan -type f
+find path -not -iwholename regex
+find /mnt/zip -name *prefs copy -print0 | xargs> -p rm
+find path -maxdepth quantity -name regex -size -size | xargs -i {} echo regex regex {}
+find path -name regex -execdir vim {} \;
+find path -type d -printf '%t+ %p\n' | sort
+cat file | ssh regex command
+find path -type f -name regex | xargs --replace regex -i {} sed --in-place regex program {}
+grep regex file | tr regex regex
+find path -name regex
+ifconfig | grep regex
+mkdir directory
+dig regex regex a
+find ./ -type f -name *.c* -print0 | xargs -0 rm -rf &>> log_del.txt
+cd $( find path -name regex | xargs -i {} dirname {} )
+find path -amin -quantity
+find path -s
+find . -print0 | xargs -0 stat -f %i 
+echo regex | rev | cut -d regex -f number | rev
+more file
+bind regex
+find path -name regex -exec ls {} \;
