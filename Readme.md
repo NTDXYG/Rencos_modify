@@ -57,7 +57,22 @@ if __name__ == '__main__':
 
 1、因为安装pylucene太麻烦了，我们进行了修改，改成了textdistance库中的textdistance.levenshtein.normalized_similarity 方法。
 
-2、修改run.py中的命令行，最重要的是使用的模型参数，我们跑的是baseline_spl_step_10000.pt
+2、修改normalize.py中的代码，例如bash，就将bash的输入长度设置为30
+
+```python
+if __name__ == '__main__':
+    lang = sys.argv[1]
+    root = 'samples/%s' % lang
+    src_len = 0
+    if lang == 'python':
+        src_len = 100
+    elif lang == 'java':
+        src_len = 300
+    elif lang == 'bash':
+        src_len = 30
+```
+
+3、修改run.py中的命令行，最重要的是使用的模型参数，我们跑的是baseline_spl_step_10000.pt
 
 ```python
 elif opt == 'retrieval':
